@@ -44,6 +44,7 @@ const ListFacilities = () => {
               <Col key={index}>
                 <div className="card">
                   <div className="card-body text-center">
+                    <p> *IMAGE* </p>
                     <h5 className="card-title">{facility.name}</h5>
                     <p className="card-text">Number of Ratings: {facility.reviews}</p>
 
