@@ -5,6 +5,7 @@
 :root {
   --matr-navbar-bg: #ECECEC;
   --matr-navbar-bg-rgb: 236, 236, 236;
+  --bs-heading-color: white;
 }
 
 /* Change bootstrap variable values.
@@ -25,4 +26,26 @@ body {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+#buildingForm {
+  width: 60%;
+}
+
+#footer {
+  background-color: #6FB879;
+  color: white;
+}
+
+#nav {
+  background-color: #6FB879;
+  color: white;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.navbar-brand {
+  color: white !important;
 }
