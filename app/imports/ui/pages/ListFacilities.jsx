@@ -8,6 +8,9 @@ const ListFacilities = () => {
     { name: 'Campus Center', reviews: 60, ratings: 4.5 },
     { name: 'Hamilton Library', reviews: 35, ratings: 3 },
     { name: 'POST', reviews: 13, ratings: 2.5 },
+    { name: 'Paradise Palms', reviews: 5, ratings: 1.5 },
+    { name: 'Random Place #1', reviews: 10, ratings: 4 },
+    { name: 'Random Place #2', reviews: 20, ratings: 4 },
     // Add more facilities as needed
   ];
 
@@ -46,7 +49,7 @@ const ListFacilities = () => {
                   <div className="card-body text-center">
                     <p> *IMAGE* </p>
                     <h5 className="card-title">{facility.name}</h5>
-                    <p className="card-text">Number of Ratings: {facility.reviews}</p>
+                    <p className="card-text">Overall Rating: {facility.reviews}</p>
 
                     {/* Star icons for ratings */}
                     <div>{renderStars(facility.ratings)}</div>
