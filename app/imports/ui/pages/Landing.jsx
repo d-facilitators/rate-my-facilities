@@ -1,10 +1,10 @@
 import React from 'react';
-import { Col, Container, Image, Row, Form } from 'react-bootstrap';
-import { FileEarmarkTextFill, PencilSquare, GeoFill } from 'react-bootstrap-icons';
+import { Col, Container, Image, Row, Form, InputGroup } from 'react-bootstrap';
+import { FileEarmarkTextFill, PencilSquare, GeoFill, BuildingsFill } from 'react-bootstrap-icons';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Container id="landing-page" fluid className="py-3">
+  <Container id="landing-page" fluid className="py-3 h-100">
     <Row className="align-middle text-center justify-content-center m-3">
       <Col xs={8}>
         <Image src="/images/rate-my-logo.png" width="400x" />
@@ -18,9 +18,10 @@ const Landing = () => (
     <Row className="align-middle text-center justify-content-center mt-3">
       <Col xs={8} className="d-flex justify-content-center align-items-center">
         <Form id="buildingForm">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <InputGroup className="mb-3" controlId="formBasicEmail">
+            <InputGroup.Text id="basic-addon1"><BuildingsFill /></InputGroup.Text>
             <Form.Control type="email" placeholder="Your Building" />
-          </Form.Group>
+          </InputGroup>
         </Form>
       </Col>
     </Row>

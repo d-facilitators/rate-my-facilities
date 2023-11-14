@@ -20,6 +20,12 @@ body {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
+#landing-page {
+  background: url("images/uhm-lowercampus-waikiki.jpg") no-repeat center center fixed;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(255,255,255,.6);
+}
+
 /* Define custom styles */
 .gray-background {
   background-color: var(--matr-navbar-bg);
@@ -48,4 +54,5 @@ body {
 
 .navbar-brand {
   color: white !important;
+  text-shadow: 2px 2px 4px #000000;
 }
