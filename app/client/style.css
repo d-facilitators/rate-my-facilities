@@ -46,3 +46,20 @@ body {
 .navbar-brand {
   color: white !important;
 }
+
+/* CSS for ListFacilities */
+.blur-background {
+  backdrop-filter: blur(200px);
+}
+
+/* fixed height for the images */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* height of the image in the modal */
+.img-fluid {
+  height: 300px;
+  object-fit: cover;
+}

@@ -1,0 +1,40 @@
+[33mcommit 963f5eb32f8597686507776b638b9e37daa41073[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 7d05875 ed2edd4
+Author: Joshua Galeria <87725131+jgaleria@users.noreply.github.com>
+Date:   Tue Nov 14 12:26:20 2023 -1000
+
+    Merge pull request #12 from d-facilitators/issue-10
+    
+    Issue 10
+
+[33mcommit ed2edd421aa74e9449552d20fbc1148351a78f42[m
+Author: jgaleria <jgaleria@hawaii.edu>
+Date:   Tue Nov 14 12:18:16 2023 -1000
+
+    Fix route
+
+[33mcommit edc648a268caffbcf788a748f19051524bb5a9cb[m
+Author: jgaleria <jgaleria@hawaii.edu>
+Date:   Tue Nov 14 00:00:19 2023 -1000
+
+    Initial Facility Ratings page
+
+[33mcommit 2232b2b0c89034fb290cdcb7598539c3374007ec[m[33m ([m[1;31morigin/issue-02[m[33m)[m
+Author: uhalpern <64875604+uhalpern@users.noreply.github.com>
+Date:   Wed Nov 8 22:45:42 2023 -1000
+
+    created landing mockup
+    
+    created landing mockup
+
+[33mcommit 7d05875cae60d30955c0f720fe44250e4f1ad9bc[m
+Author: Joshua Galeria <87725131+jgaleria@users.noreply.github.com>
+Date:   Tue Nov 7 12:22:29 2023 -1000
+
+    Update README.md
+
+[33mcommit 7b179e48b3ad17d7ca3ecb6fbfd565797a80c216[m
+Author: Joshua Galeria <87725131+jgaleria@users.noreply.github.com>
+Date:   Tue Nov 7 12:19:45 2023 -1000
+
+    Initial commit
