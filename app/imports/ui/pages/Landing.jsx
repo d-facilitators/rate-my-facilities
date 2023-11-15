@@ -4,10 +4,10 @@ import { FileEarmarkTextFill, PencilSquare, GeoFill, BuildingsFill } from 'react
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Container id="landing-page" fluid className="py-3 h-100">
+  <Container id="landing-page" fluid className="py-5 h-100">
     <Row className="align-middle text-center justify-content-center m-3">
       <Col xs={8}>
-        <Image src="/images/rate-my-logo.png" width="400x" />
+        <Image src="/images/rate-my-logo.png" width="500px" />
       </Col>
     </Row>
     <Row className="align-middle text-center justify-content-center p-3">
@@ -27,15 +27,15 @@ const Landing = () => (
     </Row>
     <Row className="align-middle text-center justify-content-center mt-5">
       <h3 className="mb-5">Join the RMF Family</h3>
-      <Col xs={3}>
+      <Col xs={8} sm={3}>
         <PencilSquare size={50} className="py-2" />
         <h4>Manage and edit your ratings</h4>
       </Col>
-      <Col xs={3}>
+      <Col xs={8} sm={3}>
         <GeoFill size={50} className="py-2" />
         <h4>Find the nearest facility to you based on ranking</h4>
       </Col>
-      <Col xs={3}>
+      <Col xs={8} sm={3}>
         <FileEarmarkTextFill size={50} className="py-2" />
         <h4>Get instant updates on problems with facilities on campus</h4>
       </Col>
