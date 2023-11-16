@@ -53,7 +53,7 @@ const ListFacilities = () => {
       <Row className="justify-content-center">
         <Col>
           <Col className="text-center">
-            <h2>UH Manoa Facilities</h2>
+            <h2>UH Manoa Buildings</h2>
           </Col>
           <Row xs={1} md={2} lg={3} className={`g-4 ${showInfo ? 'slide-out' : ''}`}>
             {facilities.map((facility, index) => (
