@@ -51,7 +51,7 @@ body {
 }
 
 .cropped {
-  width: 700px;
+  object-fit: cover;
   height: 500px;
-  overflow: hidden;
+  width: 700px;
 }
