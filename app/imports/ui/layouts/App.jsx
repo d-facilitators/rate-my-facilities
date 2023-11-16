@@ -19,6 +19,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Ratings from '../pages/Ratings';
 import ListFacilities from '../pages/ListFacilities';
+import Facility from '../pages/Facility';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signout" element={<SignOut />} />
           <Route path="/facilities" element={<ListFacilities />} />
+          <Route path="/facilityexample" element={<Facility />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/reviews" element={<ProtectedRoute><Ratings /></ProtectedRoute>} />
