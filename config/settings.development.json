@@ -1,7 +1,7 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "username": "admin", "email": "admin@foo.com", "password": "changeme", "role": "admin" },
+    { "username": "johnfoo", "email": "john@foo.com", "password": "changeme" }
   ],
 
   "defaultData": [
@@ -9,5 +9,13 @@
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultBuildings": [
+    { "buildingName": "POST", "typeOfFacility": "Restroom", "numOfReviews": 1, "facilityFloor": 7 },
+    { "buildingName": "POST", "typeOfFacility": "Restroom", "numOfReviews": 1, "facilityFloor": 2 },
+    { "buildingName": "POST", "typeOfFacility": "Study Area", "numOfReviews": 1, "facilityFloor": 2 },
+    { "buildingName": "Campus Center", "typeOfFacility": "Water Fountain", "numOfReviews": 0, "facilityFloor": 2 },
+    { "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "numOfReviews": 3, "facilityFloor": 3 }
   ]
 }
