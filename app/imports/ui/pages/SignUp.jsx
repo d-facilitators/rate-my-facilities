@@ -54,18 +54,18 @@ const SignUp = ({ location }) => {
                     <div className="py-2 mt-3">Register Your Account Below</div>
                     <div className="d-flex flex-row align-items-center py-2">
                       <PersonFill size={30} />
-                      <TextField name="username" placeholder="Your Username" className="px-2 w-100" />
+                      <TextField id="signup-form-username" name="username" placeholder="Your Username" className="px-2 w-100" />
                     </div>
                     <div className="d-flex flex-row align-items-center py-2">
                       <EnvelopeFill size={30} />
-                      <TextField name="email" placeholder="Your Email Address" className="px-2 w-100" />
+                      <TextField id="signup-form-email" name="email" placeholder="Your Email Address" className="px-2 w-100" />
                     </div>
                     <div className="d-flex flex-row align-items-center py-2">
                       <KeyFill size={30} />
-                      <TextField name="password" placeholder="Password" type="password" className="px-2 w-100" />
+                      <TextField id="signup-form-password" name="password" placeholder="Password" type="password" className="px-2 w-100" />
                     </div>
                     <ErrorsField />
-                    <div className="py-3"><SubmitField /></div>
+                    <div className="py-3"><SubmitField id="signup-form-submit" /></div>
                     <Alert variant="light">
                       Already a member? Login
                       {' '}
