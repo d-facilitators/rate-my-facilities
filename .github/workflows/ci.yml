@@ -1,4 +1,4 @@
-name: rate-my-facilities
+name: ci-rate-my-facilities
 
 on:
   push:
