@@ -33,7 +33,6 @@ const Landing = () => {
               <InputGroup.Text id="basic-addon1"><BuildingsFill /></InputGroup.Text>
               <Form.Control value={buildingName} onChange={(e) => setBuildingName(e.target.value)} placeholder="Your Building" />
             </InputGroup>
-            <Button type="submit">Submit</Button>
           </Form>
         </Col>
       </Row>
