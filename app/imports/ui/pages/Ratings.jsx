@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, ButtonGroup, Button, FormControl, Dropdown } from 'react-bootstrap';
 import { StarFill, PersonCircle } from 'react-bootstrap-icons';
-import SubmitReview from '../components/SubmitReview';
 
 const FacilityRatingPage = () => {
   const allFacilityRatings = [
@@ -199,7 +198,9 @@ const FacilityRatingPage = () => {
         </Row>
       </section>
 
-      <SubmitReview>Submit Review</SubmitReview>
+      <Button variant="primary" className="mt-4">
+        Submit Facility Rating
+      </Button>
 
     </Container>
   );
