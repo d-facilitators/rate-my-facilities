@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Button, Carousel, Col, Container, Row } from 'react-bootstrap';
+import { Button, Carousel, Col, Container, Row, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { BookmarkHeartFill, CameraFill, ExclamationCircleFill, PencilSquare, PersonCircle, StarFill } from 'react-bootstrap-icons';
 import { Facilities } from '../../api/facility/Facilities';
@@ -30,7 +30,8 @@ const IndividualFacility = () => {
             <Carousel style={{ maxHeight: 500, width: 700 }}>
               {facilityItem.photos.map((photo, index) => (
                 <Carousel.Item key={index}>
-                  <img className="cropped" src="app/public/images/waterfountain1.png" alt={`photo_${index}`} />
+                  { console.log(photo) }
+                  <Image className="cropped" src={photo} alt={`photo_${index}`} />
                 </Carousel.Item>
               ))}
             </Carousel>
@@ -79,7 +80,7 @@ const IndividualFacility = () => {
             </Row>
           </Col>
         </Row>
-      </Container>;
+      </Container>
     </Container>
   ) : <LoadingSpinner />);
 };
