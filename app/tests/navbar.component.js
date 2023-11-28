@@ -26,7 +26,7 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#review-nav1');
+    await testController.click('#ratings');
   }
 
   async gotoBuildingsPage(testController) {
@@ -34,7 +34,7 @@ class NavBar {
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#review-nav2');
+    await testController.click('#buildings');
   }
 
   async gotoAddFacilityPage(testController) {

@@ -3,7 +3,6 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
-// eslint-disable-next-line import/named
 import { ratingsPage } from './ratings.page';
 import { buildingsPage } from './buildings.page';
 import { addFacilityPage } from './addfacility.page';
