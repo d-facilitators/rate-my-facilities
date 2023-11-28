@@ -1,26 +1,27 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Facilities } from '../../api/facility/Facilities';
 import { Buildings } from '../../api/building/Buildings';
 
 // User-level publication.
-// If logged in, then publish documents owned by this user. Otherwise, publish nothing.
-Meteor.publish(Stuffs.userPublicationName, function () {
+// If logged in, then publish all facilities. Otherwise, publish nothing.
+
+Meteor.publish(Facilities.userPublicationName, function () {
   if (this.userId) {
-    const username = Meteor.users.findOne(this.userId).username;
-    return Stuffs.collection.find({ owner: username });
+    return Facilities.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Facilities.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
+    return Facilities.collection.find();
   }
   return this.ready();
 });
 
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise, publish nothing.
-Meteor.publish(Stuffs.adminPublicationName, function () {
-  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Stuffs.collection.find();
-  }
-  return this.ready();
-});
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise, publish nothing.
