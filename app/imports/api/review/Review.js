@@ -13,7 +13,6 @@ class ReviewsCollection {
       typeOfFacility: String,
       rating: {
         type: Number,
-        decimal: true,
         min: 1,
         max: 5,
       },

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
-import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Reviews } from '../../api/review/Review';
@@ -13,7 +13,6 @@ const formSchema = new SimpleSchema({
   typeOfFacility: String,
   rating: {
     type: Number,
-    decimal: true,
     min: 1,
     max: 5,
   },
@@ -53,7 +52,7 @@ const AddReview = () => {
               <Card.Body>
                 <TextField name="username" />
                 <TextField name="typeOfFacility" />
-                <NumField name="rating" decimal={true} />
+                <NumField name="rating" />
                 <TextField name="review" />
                 <SubmitField value="Submit" />
                 <ErrorsField />
