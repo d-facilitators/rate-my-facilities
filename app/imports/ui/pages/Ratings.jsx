@@ -72,7 +72,7 @@ const FacilityRatingPage = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" id="ratings-page">
       <h1>Facility Ratings</h1>
 
       {/* Search Bar */}
