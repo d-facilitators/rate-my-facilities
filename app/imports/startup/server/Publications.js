@@ -5,8 +5,16 @@ import { Buildings } from '../../api/building/Buildings';
 
 // User-level publication.
 // If logged in, then publish all facilities. Otherwise, publish nothing.
+
 Meteor.publish(Facilities.userPublicationName, function () {
   if (this.userId) {
+    return Facilities.collection.find();
+  }
+  return this.ready();
+});
+
+Meteor.publish(Facilities.adminPublicationName, function () {
+  if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
     return Facilities.collection.find();
   }
   return this.ready();

@@ -17,5 +17,9 @@
     { "buildingName": "POST", "typeOfFacility": "Study Area", "numOfReviews": 1, "facilityFloor": 2 },
     { "buildingName": "Campus Center", "typeOfFacility": "Water Fountain", "numOfReviews": 0, "facilityFloor": 2 },
     { "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "numOfReviews": 3, "facilityFloor": 3 }
+  ],
+
+  "defaultFacilities": [
+    { "building": "POST", "facilityType": "Water fountain", "avgRating": 3.2, "photos": ["/images/waterfountain1.png", "/images/waterfountain2.png", "/images/waterfountain3.png"], "statusUpdate": true, "floor": 3 }
   ]
 }
