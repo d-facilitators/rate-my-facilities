@@ -38,9 +38,19 @@ const IndividualFacility = () => {
           </Col>
           <Col>
             <Row style={{ paddingTop: 20 }}>
+              <h2>{facilityItem.facilityType} at {facilityItem.building}</h2>
+            </Row>
+            <Row style={{ paddingTop: 10 }}>
               <Col>
-                <h2>{facilityItem.facilityType} at {facilityItem.building}</h2>
                 <StarFill style={{ color: '#6FB879' }} /> {facilityItem.avgRating}/5 <a href="http://localhost:3000/facility" style={{ color: '#6FB879' }}>Rate this facility</a>
+              </Col>
+              <Col>
+                {facilityItem.statusUpdate && (
+                  <div>
+                    <ExclamationCircleFill style={{ color: '#FA7070' }} />
+                    This facility has an active alert!
+                  </div>
+                )}
               </Col>
             </Row>
             <Row style={{ paddingTop: 20 }}>
