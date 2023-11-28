@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Row, Modal, Button } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 const ListFacilities = () => {
+  const location = useLocation();
   const [showInfo, setShowInfo] = useState(false);
   const [selectedFacility, setSelectedFacility] = useState(null);
 
@@ -37,6 +39,21 @@ const ListFacilities = () => {
       'Microwaves: 1',
     ] },
   ];
+
+  useEffect(() => {
+    // Parse the query parameter from the URL
+    const queryParams = new URLSearchParams(location.search);
+    const buildingName = queryParams.get('name');
+
+    // Search for facility name in database
+    const found = facilities.find((building) => building.name === buildingName);
+
+    // Show the popup if building name was found
+    if (found) {
+      setSelectedFacility(found);
+      setShowInfo(true);
+    }
+  }, [location.search]);
 
   const handleInfoClick = (facility) => {
     setShowInfo(true);
