@@ -1,5 +1,6 @@
 /* Use Open Sans as the default sans serif font. */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,700|Source+Code+Pro:300,400,500,700");
+
 /* Set up some CSS variables to theme the application. */
 :root {
   --matr-navbar-bg: #ECECEC;
@@ -13,6 +14,7 @@
 body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
+
 /* Set the alert background on the signin and signup pages. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
@@ -22,6 +24,18 @@ body {
   background: url("app/public/images/uhm-lowercampus-waikiki.jpg") no-repeat center center fixed;
   background-size: cover;
   box-shadow: inset 0 0 0 1000px rgba(255,255,255,.6);
+}
+
+#signup-page {
+  background: url("images/light_background.jpg") no-repeat center center fixed;
+}
+
+#signin-page {
+  background: url("images/light_background.jpg") no-repeat center center fixed;
+}
+
+.signUp {
+  border-radius: 0 !important;
 }
 
 /* Define custom styles */
@@ -77,3 +91,11 @@ body {
   height: 500px;
   width: 700px;
 }
+
+.backgrnd {
+  background: url("/images/form-background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.5);
+}
+
+

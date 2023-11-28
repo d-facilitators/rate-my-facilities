@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Image, Row, Form, InputGroup } from 'react-bootstrap';
-import { FileEarmarkTextFill, PencilSquare, GeoFill, BuildingsFill } from 'react-bootstrap-icons';
+import { FileEarmarkTextFill, PencilSquare, GeoAltFill, BuildingsFill } from 'react-bootstrap-icons';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
@@ -32,7 +32,7 @@ const Landing = () => (
         <h4>Manage and edit your ratings</h4>
       </Col>
       <Col xs={8} sm={3}>
-        <GeoFill size={50} className="py-2" />
+        <GeoAltFill size={50} className="py-2" />
         <h4>Find the nearest facility to you based on ranking</h4>
       </Col>
       <Col xs={8} sm={3}>

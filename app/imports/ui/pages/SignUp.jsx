@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Navigate } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Image, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { PersonFill, EnvelopeFill, KeyFill } from 'react-bootstrap-icons';
 
 /**
  * SignUp component is similar to signin component, but we create a new user instead.
@@ -15,6 +16,7 @@ const SignUp = ({ location }) => {
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
+    username: String,
     email: String,
     password: String,
   });
@@ -22,8 +24,8 @@ const SignUp = ({ location }) => {
 
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
-    const { email, password } = doc;
-    Accounts.createUser({ email, username: email, password }, (err) => {
+    const { username, email, password } = doc;
+    Accounts.createUser({ username, email, password }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -40,35 +42,51 @@ const SignUp = ({ location }) => {
     return <Navigate to={from} />;
   }
   return (
-    <Container id="signup-page" className="py-3">
-      <Row className="justify-content-center">
-        <Col xs={5}>
-          <Col className="text-center">
-            <h2>Register your account</h2>
-          </Col>
+    <Container id="signup-page" fluid className="py-3" style={{ height: '760px' }}>
+      <Row className="justify-content-center align-items-center h-100">
+        <Col sm={2} md={6}>
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
+            <Card className="signUp shadow-lg">
               <Card.Body>
-                <TextField name="email" placeholder="E-mail address" />
-                <TextField name="password" placeholder="Password" type="password" />
-                <ErrorsField />
-                <SubmitField />
+                <div className="text-center"><h2>Welcome to Rate My Facilities</h2></div>
+                <Row className="justify-conetent-center  align-items-center">
+                  <Col style={{ maxWidth: '50%' }}>
+                    <div className="py-2 mt-3">Register Your Account Below</div>
+                    <div className="d-flex flex-row align-items-center py-2">
+                      <PersonFill size={30} />
+                      <TextField id="signup-form-username" name="username" placeholder="Your Username" className="px-2 w-100" />
+                    </div>
+                    <div className="d-flex flex-row align-items-center py-2">
+                      <EnvelopeFill size={30} />
+                      <TextField id="signup-form-email" name="email" placeholder="Your Email Address" className="px-2 w-100" />
+                    </div>
+                    <div className="d-flex flex-row align-items-center py-2">
+                      <KeyFill size={30} />
+                      <TextField id="signup-form-password" name="password" placeholder="Password" type="password" className="px-2 w-100" />
+                    </div>
+                    <ErrorsField />
+                    <div className="py-3"><SubmitField id="signup-form-submit" /></div>
+                    <Alert variant="light">
+                      Already a member? Login
+                      {' '}
+                      <Link to="/signin">here</Link>
+                    </Alert>
+                    {error === '' ? (
+                      ''
+                    ) : (
+                      <Alert variant="danger">
+                        <Alert.Heading>Registration was not successful</Alert.Heading>
+                        {error}
+                      </Alert>
+                    )}
+                  </Col>
+                  <Col className="text-center">
+                    <Image src="/images/Signup-art.jpg" fluid width="500px" />
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="light">
-            Already have an account? Login
-            {' '}
-            <Link to="/signin">here</Link>
-          </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Registration was not successful</Alert.Heading>
-              {error}
-            </Alert>
-          )}
         </Col>
       </Row>
     </Container>
