@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Container, Image, Row, Form, InputGroup, Button } from 'react-bootstrap';
+import { Col, Container, Image, Row, Form, InputGroup } from 'react-bootstrap';
 import { FileEarmarkTextFill, PencilSquare, GeoAltFill, BuildingsFill } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ const Landing = () => {
           <Form id="buildingForm" onSubmit={handleSubmit}>
             <InputGroup className="mb-3">
               <InputGroup.Text id="basic-addon1"><BuildingsFill /></InputGroup.Text>
-              <Form.Control value={buildingName} onChange={(e) => setBuildingName(e.target.value)} placeholder="Your Building" />
+              <Form.Control value={buildingName} onChange={(e) => setBuildingName(e.target.value)} placeholder="Your Building" id="building-search" />
             </InputGroup>
           </Form>
         </Col>

@@ -3,6 +3,10 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { navBar } from './navbar.component';
+// eslint-disable-next-line import/named
+import { ratingsPage } from './ratings.page';
+import { buildingsPage } from './buildings.page';
+import { addFacilityPage } from './addfacility.page';
 
 /* global fixture:false, test:false */
 
@@ -14,6 +18,7 @@ fixture('rate-my-facilities localhost test with default db')
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
+  await landingPage.search(testController);
 });
 
 test('Test that signin and signout work', async (testController) => {
@@ -32,6 +37,33 @@ test('Test that signup page, then logout works', async (testController) => {
   await signupPage.isDisplayed(testController);
   await signupPage.signupUser(testController, newUser, newEmail, credentials.password);
   // New user has successfully logged in, so now let's logout.
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('Test that ratings page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoRatingsPage(testController);
+  await ratingsPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('Test that buildings page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoBuildingsPage(testController);
+  await buildingsPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('Test that add facility page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoAddFacilityPage(testController);
+  await addFacilityPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
