@@ -66,7 +66,7 @@ const ListFacilities = () => {
   };
 
   return (
-    <Container className={`py-3 ${showInfo ? 'blur-background' : ''}`}>
+    <Container id="buildings-page" className={`py-3 ${showInfo ? 'blur-background' : ''}`}>
       <Row className="justify-content-center">
         <Col>
           <Col className="text-center">

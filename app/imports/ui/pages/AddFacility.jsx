@@ -39,7 +39,7 @@ const AddFacility = () => {
 
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container className="py-3" id="add-facility">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center">
