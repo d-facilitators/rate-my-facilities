@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Buildings } from '../../api/building/Buildings';
 import { Facilities } from '../../api/facility/Facilities';
+import { Reviews } from '../../api/review/Review';
 
 /* eslint-disable no-console */
 
@@ -43,4 +44,31 @@ if (Facilities.collection.find().count() === 0) {
     console.log('Creating default facilities.');
     Meteor.settings.defaultFacilities.forEach(facility => addFacility(facility));
   }
+}
+
+const addReview = (review) => {
+  console.log(`Adding Review: ${review.username} - ${review.typeOfFacility}`);
+  Reviews.collection.insert(review);
+};
+
+// Initialize the ReviewsCollection if empty.
+if (Reviews.collection.find().count() === 0) {
+  const defaultReviews = [
+    {
+      username: 'John Doe',
+      typeOfFacility: 'Restroom',
+      rating: 4,
+      review: 'Clean and well-maintained.',
+    },
+    {
+      username: 'Jane Smith',
+      typeOfFacility: 'Study Space',
+      rating: 5,
+      review: 'Great place to study!',
+    },
+    // Add more default reviews as needed
+  ];
+
+  console.log('Creating default reviews.');
+  defaultReviews.forEach((review) => addReview(review));
 }

@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
 import { Facilities } from '../../api/facility/Facilities';
 import { Buildings } from '../../api/building/Buildings';
+import { Reviews } from '../../api/review/Review';
 
 // User-level publication.
 // If logged in, then publish all facilities. Otherwise, publish nothing.
@@ -47,6 +48,13 @@ Meteor.publish(Buildings.adminPublicationName, function () {
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
+
+Meteor.publish(Reviews.userPublicationName, function () {
+  if (this.userId) {
+    return Reviews.collection.find();
   }
   return this.ready();
 });
