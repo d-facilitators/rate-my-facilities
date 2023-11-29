@@ -6,7 +6,7 @@ import { navBar } from './navbar.component';
 import { ratingsPage } from './ratings.page';
 import { buildingsPage } from './buildings.page';
 import { addFacilityPage } from './addfacility.page';
-import { addreviewPage, addReviewPage } from './addreview.page';
+import { addreviewPage } from './addreview.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
