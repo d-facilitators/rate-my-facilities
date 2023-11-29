@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 // import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -10,7 +10,10 @@ import { Reviews } from '../../api/review/Review';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   username: String,
-  typeOfFacility: String,
+  typeOfFacility: {
+    type: String,
+    allowedValues: ['toilet', 'study', 'eating', 'drinking'],
+  },
   rating: {
     type: Number,
     min: 1,
@@ -51,7 +54,7 @@ const AddReview = () => {
             <Card>
               <Card.Body>
                 <TextField name="username" />
-                <TextField name="typeOfFacility" />
+                <SelectField name="typeOfFacility" />
                 <NumField name="rating" />
                 <TextField name="review" />
                 <SubmitField value="Submit" />
