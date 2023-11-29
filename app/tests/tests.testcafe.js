@@ -6,7 +6,7 @@ import { navBar } from './navbar.component';
 import { ratingsPage } from './ratings.page';
 import { buildingsPage } from './buildings.page';
 import { addFacilityPage } from './addfacility.page';
-
+import { addreviewPage, addReviewPage } from './addreview.page';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -63,6 +63,17 @@ test('Test that add facility page works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddFacilityPage(testController);
   await addFacilityPage.isDisplayed(testController);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+test('Test that add review page works', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoRatingsPage(testController);
+  await ratingsPage.isDisplayed(testController);
+  await testController.click('#submit-review-button');
+  await addreviewPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
