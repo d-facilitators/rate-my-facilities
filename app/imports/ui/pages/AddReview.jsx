@@ -10,9 +10,10 @@ import { Reviews } from '../../api/review/Review';
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   username: String,
+  buildingName: String,
   typeOfFacility: {
     type: String,
-    allowedValues: ['toilet', 'study', 'eating', 'drinking'],
+    allowedValues: ['Restroom', 'Water Fountain', 'Study Space'],
   },
   rating: {
     type: Number,
@@ -28,10 +29,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddReview = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { username, typeOfFacility, rating, review } = data;
+    const { username, buildingName, typeOfFacility, rating, review } = data;
 
     Reviews.collection.insert(
-      { username, typeOfFacility, rating, review },
+      { username, buildingName, typeOfFacility, rating, review },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');

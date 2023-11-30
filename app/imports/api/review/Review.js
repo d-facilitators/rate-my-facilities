@@ -10,9 +10,10 @@ class ReviewsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       username: String,
+      buildingName: String,
       typeOfFacility: {
         type: String,
-        allowedValues: ['toilet', 'study', 'eating', 'drinking'],
+        allowedValues: ['Restroom', 'Water Fountain', 'Study Space'],
       },
       rating: {
         type: Number,

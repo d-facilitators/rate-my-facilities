@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, ButtonGroup, Button, Dropdown } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import { PersonCircle, StarFill } from 'react-bootstrap-icons';
 import { Reviews } from '../../api/review/Review';
+import SubmitReview from '../components/SubmitReview';
+import VisitReview from '../components/VisitReview';
 
 const ListReviews = () => {
   const [selectedFacilityType, setSelectedFacilityType] = useState('all');
@@ -23,7 +26,7 @@ const ListReviews = () => {
       {
         typeOfFacility: selectedFacilityType === 'all' ? { $exists: true } : selectedFacilityType,
       },
-      { sort: sortOption }
+      { sort: sortOption },
     ).fetch();
 
     return {
@@ -41,73 +44,74 @@ const ListReviews = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4" id="reviews-page">
       <h1>Facility Reviews</h1>
 
       {ready ? (
         <>
-          {/* Facility Type Filter Buttons */}
-          <ButtonGroup className="mb-4">
-            <Button
-              variant={selectedFacilityType === 'all' ? 'primary' : 'secondary'}
-              onClick={() => handleFacilityTypeFilter('all')}
-            >
-              All
-            </Button>
-            <Button
-              variant={selectedFacilityType === 'toilet' ? 'primary' : 'secondary'}
-              onClick={() => handleFacilityTypeFilter('toilet')}
-            >
-              Restroom
-            </Button>
-            <Button
-              variant={selectedFacilityType === 'study' ? 'primary' : 'secondary'}
-              onClick={() => handleFacilityTypeFilter('study')}
-            >
-              Study Area
-            </Button>
-            <Button
-              variant={selectedFacilityType === 'eating' ? 'primary' : 'secondary'}
-              onClick={() => handleFacilityTypeFilter('eating')}
-            >
-              Dining
-            </Button>
-            <Button
-              variant={selectedFacilityType === 'drinking' ? 'primary' : 'secondary'}
-              onClick={() => handleFacilityTypeFilter('drinking')}
-            >
-              Water Fountain
-            </Button>
-          </ButtonGroup>
-
-          {/* Sort By Rating Dropdown */}
-          <Dropdown className="mb-4">
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-              Sort By Rating: {sortByRating ? 'Low to High' : 'High to Low'}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={handleSortByRating}>Toggle Sorting</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <SubmitReview>Submit Review</SubmitReview>
 
           {/* All Reviews Section */}
           <section className="mt-4">
-            <h2>All Reviews</h2>
+            <h5>Facility Type Filter:</h5>
+
+            {/* Facility Type Filter Buttons */}
+            <ButtonGroup className="mb-4">
+              <Button
+                variant={selectedFacilityType === 'all' ? 'primary' : 'secondary'}
+                onClick={() => handleFacilityTypeFilter('all')}
+              >
+                All
+              </Button>
+              <Button
+                variant={selectedFacilityType === 'Restroom' ? 'primary' : 'secondary'}
+                onClick={() => handleFacilityTypeFilter('Restroom')}
+              >
+                Restroom
+              </Button>
+              <Button
+                variant={selectedFacilityType === 'Water Fountain' ? 'primary' : 'secondary'}
+                onClick={() => handleFacilityTypeFilter('Water Fountain')}
+              >
+                Water Fountain
+              </Button>
+              <Button
+                variant={selectedFacilityType === 'Study Space' ? 'primary' : 'secondary'}
+                onClick={() => handleFacilityTypeFilter('Study Space')}
+              >
+                Study Space
+              </Button>
+            </ButtonGroup>
+
+            {/* Sort By Rating Dropdown */}
+            <Dropdown className="mb-4">
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                Sort By Rating: {sortByRating ? 'Low to High' : 'High to Low'}
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={handleSortByRating}>Toggle Sorting</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+
             <Row>
               {reviews.map((review) => (
                 <Col key={review._id} md={4} className="mb-4">
                   <Card>
                     <Card.Body>
-                      <Card.Title>{review.username}</Card.Title>
+                      <Card.Title>
+                        {review.buildingName}: {review.typeOfFacility}
+                      </Card.Title>
                       <Card.Text>
-                        Type of Facility: {review.typeOfFacility}
+                        <PersonCircle style={{ color: '#6FB879' }} />
+                        {review.username}
                       </Card.Text>
                       <Card.Text>
+                        <StarFill style={{ color: '#6FB879' }} />
                         Rating: {review.rating}/5
                       </Card.Text>
                       <Card.Text>
-                        Review: {review.review}
+                        <VisitReview />: {review.review}
                       </Card.Text>
                     </Card.Body>
                   </Card>
