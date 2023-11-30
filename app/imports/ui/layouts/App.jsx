@@ -18,7 +18,7 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 // import Ratings from '../pages/Ratings';
-import FacilityRatingPage from '../pages/ListRatings';
+// import FacilityRatingPage from '../pages/ListRatings';
 import ListFacilities from '../pages/ListFacilities';
 import IndividualFacility from '../pages/IndividualFacility';
 import AddFacility from '../pages/AddFacility';
@@ -48,7 +48,7 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/reviews" element={<ProtectedRoute><ListReviews /></ProtectedRoute>} />
-          <Route path="/ratings" element={<ProtectedRoute><FacilityRatingPage /></ProtectedRoute>} />
+          {/* <Route path="/ratings" element={<ProtectedRoute><FacilityRatingPage /></ProtectedRoute>} /> */}
           <Route path="/add" element={<ProtectedRoute><AddFacility /></ProtectedRoute>} />
           <Route path="/addreview" element={<ProtectedRoute><AddReview /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
