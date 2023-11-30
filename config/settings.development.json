@@ -20,6 +20,6 @@
   ],
 
   "defaultFacilities": [
-    { "building": "POST", "facilityType": "Water fountain", "avgRating": 3.2, "photos": ["/images/waterfountain1.png", "/images/waterfountain2.png", "/images/waterfountain3.png"], "statusUpdate": true, "floor": 3 }
+    { "building": "POST", "facilityType": "Water fountain", "avgRating": 3.2, "photos": ["/images/waterfountain1.png", "/images/waterfountain2.png", "/images/waterfountain3.png"], "statusUpdate": "Issue confirmed", "floor": 3 }
   ]
 }
