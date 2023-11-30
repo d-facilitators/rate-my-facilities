@@ -24,16 +24,16 @@
   ],
 
   "defaultReviews": [
-    { "username": "John Doe", "typeOfFacility": "toilet", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "typeOfFacility": "study", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "typeOfFacility": "drinking", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "typeOfFacility": "eating", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "typeOfFacility": "toilet", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "typeOfFacility": "study", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "typeOfFacility": "drinking", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "typeOfFacility": "eating", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "typeOfFacility": "toilet", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "typeOfFacility": "study", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "typeOfFacility": "drinking", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 }
+    { "username": "John Doe", "buildingName": "Hamilton", "typeOfFacility": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
+    { "username": "Jane Doe", "buildingName": "Hamilton", "typeOfFacility": "Water Fountain", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
+    { "username": "John Doe", "buildingName": "Hamilton", "typeOfFacility": "Study Space", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
+    { "username": "Jane Doe", "buildingName": "Hamilton", "typeOfFacility": "Water Fountain", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
+    { "username": "John Doe", "buildingName": "Hamilton", "typeOfFacility": "Restroom", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
+    { "username": "Jane Doe", "buildingName": "Hamilton", "typeOfFacility": "Study Space", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
+    { "username": "John Doe", "buildingName": "Hamilton", "typeOfFacility": "Water Fountain", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
+    { "username": "Jane Doe", "buildingName": "Hamilton", "typeOfFacility": "Restroom", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
+    { "username": "John Doe", "buildingName": "Hamilton", "typeOfFacility": "Study Space", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
+    { "username": "Jane Doe", "buildingName": "Hamilton", "typeOfFacility": "Water Fountain", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
+    { "username": "John Doe", "buildingName": "Hamilton", "typeOfFacility": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 }
   ]
 }
