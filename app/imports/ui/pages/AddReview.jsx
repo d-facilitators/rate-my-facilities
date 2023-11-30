@@ -47,7 +47,7 @@ const AddReview = () => {
   // Render the form.
   let fRef = null;
   return (
-    <Container className="py-3">
+    <Container className="py-3" id="add-review">
       <Row className="justify-content-center">
         <Col xs={5}>
           <Col className="text-center"><h2>Add Review</h2></Col>
