@@ -53,22 +53,6 @@ const addReview = (review) => {
 
 // Initialize the ReviewsCollection if empty.
 if (Reviews.collection.find().count() === 0) {
-  const defaultReviews = [
-    {
-      username: 'John Doe',
-      typeOfFacility: 'Restroom',
-      rating: 4,
-      review: 'Clean and well-maintained.',
-    },
-    {
-      username: 'Jane Smith',
-      typeOfFacility: 'Study Space',
-      rating: 5,
-      review: 'Great place to study!',
-    },
-    // Add more default reviews as needed
-  ];
-
   console.log('Creating default reviews.');
-  defaultReviews.forEach((review) => addReview(review));
+  Meteor.settings.defaultReviews.forEach(reviews => addReview(reviews));
 }
