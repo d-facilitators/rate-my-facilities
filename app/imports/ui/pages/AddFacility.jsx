@@ -53,8 +53,8 @@ const AddFacility = () => {
     const { facilityType, building, floor, photos } = data;
     const owner = Meteor.user().username;
 
-    // Check if photos is provided, otherwise set a default image URL
-    const photosArray = photos || ['cc.jpg'];
+    // Check if photos is provided, otherwise set a default image
+    const photosArray = photos || ['/images/cc.jpg'];
 
     Facilities.collection.insert(
       { facilityType, building, avgRating: 0, floor, photos: photosArray, statusUpdate: false, owner },
