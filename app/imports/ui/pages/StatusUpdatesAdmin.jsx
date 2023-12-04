@@ -34,11 +34,11 @@ const StatusUpdatesAdmin = () => {
                 <th>Building</th>
                 <th>Floor</th>
                 <th>Status</th>
-                <th>Resolve</th>
+                <th>Update Status</th>
               </tr>
             </thead>
             <tbody>
-              {facilityList.map((facility) => <StatusesAdmin key={facility._id} facility={facility} />)}
+              {facilityList.map((facility) => ((facility.statusUpdate !== 'No issue') ? (<StatusesAdmin key={facility._id} facility={facility} />) : null))}
             </tbody>
           </Table>
         </Col>
