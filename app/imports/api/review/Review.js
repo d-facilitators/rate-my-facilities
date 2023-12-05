@@ -1,6 +1,14 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
+const buildingNames = [
+  'Bilger Hall',
+  'Campus Center',
+  'Hamilton Library',
+  'Paradise Palms',
+  'POST',
+  'Shidler College of Business',
+];
 class ReviewsCollection {
   constructor() {
     // The name of this collection.
@@ -10,7 +18,10 @@ class ReviewsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       username: String,
-      buildingName: String,
+      buildingName: {
+        type: String,
+        allowedValues: buildingNames,
+      },
       typeOfFacility: {
         type: String,
         allowedValues: ['Restroom', 'Water Fountain', 'Study Space'],

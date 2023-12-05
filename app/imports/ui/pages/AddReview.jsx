@@ -7,10 +7,22 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Reviews } from '../../api/review/Review';
 
+const buildingNames = [
+  'Bilger Hall',
+  'Campus Center',
+  'Hamilton Library',
+  'Paradise Palms',
+  'POST',
+  'Shidler College of Business',
+];
+
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   username: String,
-  buildingName: String,
+  buildingName: {
+    type: String,
+    allowedValues: buildingNames,
+  },
   typeOfFacility: {
     type: String,
     allowedValues: ['Restroom', 'Water Fountain', 'Study Space'],
@@ -55,6 +67,7 @@ const AddReview = () => {
             <Card>
               <Card.Body>
                 <TextField name="username" />
+                <SelectField name="buildingName" />
                 <SelectField name="typeOfFacility" />
                 <NumField name="rating" />
                 <TextField name="review" />

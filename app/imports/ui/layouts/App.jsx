@@ -24,6 +24,7 @@ import IndividualFacility from '../pages/IndividualFacility';
 import AddFacility from '../pages/AddFacility';
 import AddReview from '../pages/AddReview';
 import ListReviews from '../pages/ListReviews';
+import Test from '../pages/Test';
 // import Facility from '../components/Facility';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/reviews" element={<ProtectedRoute><ListReviews /></ProtectedRoute>} />
+          <Route path="/test" element={<ProtectedRoute><Test /></ProtectedRoute>} />
           {/* <Route path="/ratings" element={<ProtectedRoute><FacilityRatingPage /></ProtectedRoute>} /> */}
           <Route path="/add" element={<ProtectedRoute><AddFacility /></ProtectedRoute>} />
           <Route path="/addreview" element={<ProtectedRoute><AddReview /></ProtectedRoute>} />

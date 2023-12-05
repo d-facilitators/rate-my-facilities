@@ -56,5 +56,3 @@ if (Reviews.collection.find().count() === 0) {
   console.log('Creating default reviews.');
   Meteor.settings.defaultReviews.forEach(reviews => addReview(reviews));
 }
-// Fetch building names from Buildings collection
-const buildingNames = Buildings.collection.find().map(building => building.buildingName);
