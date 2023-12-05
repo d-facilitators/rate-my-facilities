@@ -71,10 +71,11 @@ test('Test that add facility page works', async (testController) => {
 test('Test that add review page works', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoRatingsPage(testController);
-  await ratingsPage.isDisplayed(testController);
+  await navBar.gotoReviewsPage(testController);
+  await reviewsPage.isDisplayed(testController);
   await testController.click('#submit-review-button');
   await addreviewPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
+
