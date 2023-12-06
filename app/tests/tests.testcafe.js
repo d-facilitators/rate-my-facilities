@@ -78,4 +78,3 @@ test('Test that add review page works', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
-
