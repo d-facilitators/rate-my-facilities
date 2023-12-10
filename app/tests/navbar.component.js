@@ -21,12 +21,20 @@ class NavBar {
     await testController.click('#login-dropdown-sign-in');
   }
 
-  async gotoRatingsPage(testController) {
+  // async gotoRatingsPage(testController) {
+  //   const visible = await Selector('#basic-navbar-nav').visible;
+  //   if (!visible) {
+  //     await testController.click('button.navbar-toggler');
+  //   }
+  //   await testController.click('#ratings');
+  // }
+
+  async gotoReviewsPage(testController) {
     const visible = await Selector('#basic-navbar-nav').visible;
     if (!visible) {
       await testController.click('button.navbar-toggler');
     }
-    await testController.click('#ratings');
+    await testController.click('#reviews');
   }
 
   async gotoBuildingsPage(testController) {
