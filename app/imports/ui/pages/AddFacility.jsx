@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AutoForm, ErrorsField, NumField, SelectField, TextField } from 'uniforms-bootstrap5';
-import { Navigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -70,13 +70,8 @@ const AddFacility = () => {
         }
       },
     );
-    console.log(newRoute);
     setRoute(newRoute);
-    console.log(route);
-    if (route !== '') {
-      setRedirect(true);
-    }
-    console.log(redirect);
+    setRedirect(true);
   };
 
   // Function to handle file uploads
