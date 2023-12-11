@@ -45,11 +45,16 @@ const StatusUpdatesAdmin = () => {
       </Row>
     </Container>
   ) : (
-    <tr>
-      <td colSpan="5">
-        <LoadingSpinner />
-      </td>
-    </tr>
+    <Table>
+      <tbody>
+        <tr>
+          <td colSpan="5">
+            <LoadingSpinner />
+          </td>
+        </tr>
+      </tbody>
+    </Table>
+
   ));
 };
 

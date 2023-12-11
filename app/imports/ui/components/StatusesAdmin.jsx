@@ -54,7 +54,13 @@ const StatusesAdmin = ({ facility }) => {
         )}
       </td>
     </tr>
-  ) : <LoadingSpinner />);
+  ) : (
+    <tr>
+      <td colSpan="5">
+        <LoadingSpinner />
+      </td>
+    </tr>
+  ));
 };
 
 StatusesAdmin.propTypes = {
