@@ -2,11 +2,13 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Carousel, Col, Container, Row, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { useParams } from 'react-router';
 import { BookmarkHeartFill, CameraFill, ExclamationCircleFill, PencilSquare, PersonCircle, StarFill } from 'react-bootstrap-icons';
 import { Facilities } from '../../api/facility/Facilities';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const IndividualFacility = () => {
+  const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, facilityItem } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -16,9 +18,9 @@ const IndividualFacility = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const facilities = Facilities.collection.find({}).fetch();
+    const facility = Facilities.collection.findOne(_id);
     return {
-      facilityItem: facilities[0],
+      facilityItem: facility,
       ready: rdy,
     };
   }, []);
@@ -30,7 +32,6 @@ const IndividualFacility = () => {
             <Carousel style={{ maxHeight: 500, width: 700 }}>
               {facilityItem.photos.map((photo, index) => (
                 <Carousel.Item key={index}>
-                  { console.log(photo) }
                   <Image className="cropped" src={photo} alt={`photo_${index}`} />
                 </Carousel.Item>
               ))}
@@ -45,10 +46,16 @@ const IndividualFacility = () => {
                 <StarFill style={{ color: '#6FB879' }} /> {facilityItem.avgRating}/5 <a href="http://localhost:3000/facility" style={{ color: '#6FB879' }}>Rate this facility</a>
               </Col>
               <Col>
-                {facilityItem.statusUpdate && (
+                {(facilityItem.statusUpdate === 'Issue confirmed') && (
                   <div>
                     <ExclamationCircleFill style={{ color: '#FA7070' }} />
                     This facility has an active alert!
+                  </div>
+                )}
+                {(facilityItem.statusUpdate === 'Issue reported') && (
+                  <div>
+                    <ExclamationCircleFill style={{ color: '#FFDF51' }} />
+                    This facility has a issue pending confirmation.
                   </div>
                 )}
               </Col>

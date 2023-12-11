@@ -6,10 +6,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
-// import AddStuff from '../pages/AddStuff';
-import EditStuff from '../pages/EditStuff';
+import StatusUpdatesAdmin from '../pages/StatusUpdatesAdmin';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import SignOut from '../pages/SignOut';
@@ -18,11 +15,12 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import LoadingSpinner from '../components/LoadingSpinner';
 // import Ratings from '../pages/Ratings';
-import FacilityRatingPage from '../pages/ListRatings';
+// import FacilityRatingPage from '../pages/ListRatings';
 import ListFacilities from '../pages/ListFacilities';
 import IndividualFacility from '../pages/IndividualFacility';
 import AddFacility from '../pages/AddFacility';
 import AddReview from '../pages/AddReview';
+import ListReviews from '../pages/ListReviews';
 // import Facility from '../components/Facility';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
@@ -44,13 +42,12 @@ const App = () => {
           <Route path="/signout" element={<SignOut />} />
           <Route path="/facilities" element={<ListFacilities />} />
           <Route path="/facilityexample" element={<IndividualFacility />} />
+          <Route path="/facility/:_id" element={<IndividualFacility />} />
           <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
-          <Route path="/ratings" element={<ProtectedRoute><FacilityRatingPage /></ProtectedRoute>} />
+          <Route path="/reviews" element={<ProtectedRoute><ListReviews /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddFacility /></ProtectedRoute>} />
           <Route path="/addreview" element={<ProtectedRoute><AddReview /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><ListStuffAdmin /></AdminProtectedRoute>} />
+          <Route path="/statusupdates" element={<AdminProtectedRoute ready={ready}><StatusUpdatesAdmin /></AdminProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

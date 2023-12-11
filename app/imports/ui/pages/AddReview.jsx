@@ -1,16 +1,32 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 // import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Reviews } from '../../api/review/Review';
 
+const buildingNames = [
+  'Bilger Hall',
+  'Campus Center',
+  'Hamilton Library',
+  'Paradise Palms',
+  'POST',
+  'Shidler College of Business',
+];
+
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   username: String,
-  typeOfFacility: String,
+  buildingName: {
+    type: String,
+    allowedValues: buildingNames,
+  },
+  typeOfFacility: {
+    type: String,
+    allowedValues: ['Restroom', 'Water Fountain', 'Study Space'],
+  },
   rating: {
     type: Number,
     min: 1,
@@ -25,10 +41,10 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const AddReview = () => {
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { username, typeOfFacility, rating, review } = data;
+    const { username, buildingName, typeOfFacility, rating, review } = data;
 
     Reviews.collection.insert(
-      { username, typeOfFacility, rating, review },
+      { username, buildingName, typeOfFacility, rating, review },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -51,7 +67,8 @@ const AddReview = () => {
             <Card>
               <Card.Body>
                 <TextField name="username" />
-                <TextField name="typeOfFacility" />
+                <SelectField name="buildingName" />
+                <SelectField name="typeOfFacility" />
                 <NumField name="rating" />
                 <TextField name="review" />
                 <SubmitField value="Submit" />
