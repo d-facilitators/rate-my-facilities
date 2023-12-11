@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Card, ButtonGroup, Button, Dropdown } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 import { PersonCircle, StarFill } from 'react-bootstrap-icons';
 import { Reviews } from '../../api/review/Review';
-import SubmitReview from '../components/SubmitReview';
-import VisitReview from '../components/VisitReview';
+// import SubmitReview from '../components/SubmitReview';
+// import VisitReview from '../components/VisitReview';
 
 const ListReviews = () => {
   const [selectedFacilityType, setSelectedFacilityType] = useState('all');
@@ -49,7 +50,7 @@ const ListReviews = () => {
 
       {ready ? (
         <>
-          <SubmitReview>Submit Review</SubmitReview>
+          {/* <SubmitReview>Submit Review</SubmitReview> */}
 
           {/* All Reviews Section */}
           <section className="mt-4">
@@ -100,7 +101,9 @@ const ListReviews = () => {
                   <Card>
                     <Card.Body>
                       <Card.Title>
-                        {review.buildingName}: {review.typeOfFacility}
+                        <Link to={`/facility/${review.facilityID}`}>
+                          {review.buildingName}: {review.typeOfFacility}
+                        </Link>
                       </Card.Title>
                       <Card.Text>
                         <PersonCircle style={{ color: '#6FB879' }} />
@@ -111,7 +114,7 @@ const ListReviews = () => {
                         Rating: {review.rating}/5
                       </Card.Text>
                       <Card.Text>
-                        <VisitReview />: {review.review}
+                        {review.review}
                       </Card.Text>
                     </Card.Body>
                   </Card>

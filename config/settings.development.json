@@ -24,16 +24,16 @@
   ],
 
   "defaultReviews": [
-    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Study Space", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Study Space", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Study Space", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 },
-    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2 },
-    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2 }
+    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "1" },
+    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2, "facilityID": "1" },
+    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Study Space", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "2" },
+    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "3" },
+    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2, "facilityID": "4" },
+    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Study Space", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "5" },
+    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 2, "review": "Dirty and smelly.", "building": "POST", "floor": 2, "facilityID": "6" },
+    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 3, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "7" },
+    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Study Space", "rating": 5, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "8" },
+    { "username": "Jane Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "rating": 1, "review": "Dirty and smelly.", "building": "POST", "floor": 2, "facilityID": "6"},
+    { "username": "John Doe", "buildingName": "Hamilton Library", "typeOfFacility": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "building": "POST", "floor": 2, "facilityID": "7" }
   ]
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Container, Row, Carousel, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { StarFill, PencilSquare, CameraFill, ExclamationCircleFill, BookmarkHeartFill, PersonCircle } from 'react-bootstrap-icons';
 
 const Facility = ({ facility }) => {
@@ -24,9 +25,11 @@ const Facility = ({ facility }) => {
         </Row>
         <Row style={{ paddingTop: 20 }}>
           <Col>
-            <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
-              <PencilSquare /> Write a review
-            </Button>
+            <Link to="/addreview">
+              <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
+                <PencilSquare /> Write a review
+              </Button>
+            </Link>
           </Col>
           <Col>
             <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>

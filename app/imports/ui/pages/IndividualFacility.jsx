@@ -2,26 +2,33 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Carousel, Col, Container, Row, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { BookmarkHeartFill, CameraFill, ExclamationCircleFill, PencilSquare, PersonCircle, StarFill } from 'react-bootstrap-icons';
 import { Facilities } from '../../api/facility/Facilities';
+import { Reviews } from '../../api/review/Review';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const IndividualFacility = () => {
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, facilityItem } = useTracker(() => {
+  const { ready, facilityItem, reviews } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Facilities.userPublicationName);
+    const subscription1 = Meteor.subscribe(Facilities.userPublicationName);
+    const subscription2 = Meteor.subscribe(Reviews.userPublicationName);
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy1 = subscription1.ready();
+    const rdy2 = subscription2.ready();
     // Get the Stuff documents
     const facility = Facilities.collection.findOne(_id);
+    const facilityReviews = Reviews.collection.find({ facilityID: _id }).fetch();
+
     return {
       facilityItem: facility,
-      ready: rdy,
+      reviews: facilityReviews,
+      ready: rdy1 && rdy2,
     };
   }, []);
   return (ready ? (
@@ -62,9 +69,11 @@ const IndividualFacility = () => {
             </Row>
             <Row style={{ paddingTop: 20 }}>
               <Col>
-                <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
-                  <PencilSquare /> Write a review
-                </Button>
+                <Link to={`/addreview/${facilityItem._id}`}>
+                  <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
+                    <PencilSquare /> Write a review
+                  </Button>
+                </Link>
               </Col>
               <Col>
                 <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
@@ -86,13 +95,17 @@ const IndividualFacility = () => {
             <Row>
               <Col>
                 <h3>Reviews</h3>
-                <h6><PersonCircle style={{ color: '#6FB879' }} /> Jane Doe</h6>
-                <p>&quot;I like the faucet handle, but my mouth feels dry after drinking the water.&quot;</p>
-                <h6><PersonCircle style={{ color: '#6FB879' }} /> Naruto</h6>
-                <p>&quot;Really convenient if you&apos;re in POST 319.&quot;</p>
-                <h6><PersonCircle style={{ color: '#6FB879' }} /> Sandwich Eater</h6>
-                <p>&quot;Pretty good.&quot;</p>
-                <a href="http://localhost:3000/facility" style={{ color: '#6FB879' }}>See all comments</a>
+                {reviews.map((review, index) => (
+                  <div key={index}>
+                    <h6>
+                      <PersonCircle style={{ color: '#6FB879' }} /> {review.username} - Rating: {review.rating}
+                    </h6>
+                    <p>&quot;{review.review}&quot;</p>
+                  </div>
+                ))}
+                <Link to="http://localhost:3000/reviews" style={{ color: '#6FB879' }}>
+                  See reviews for all facilities
+                </Link>
               </Col>
             </Row>
           </Col>

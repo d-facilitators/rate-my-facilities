@@ -1,60 +1,78 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 // import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { useParams } from 'react-router-dom';
 import { Reviews } from '../../api/review/Review';
-
-const buildingNames = [
-  'Bilger Hall',
-  'Campus Center',
-  'Hamilton Library',
-  'Paradise Palms',
-  'POST',
-  'Shidler College of Business',
-];
+import { Facilities } from '../../api/facility/Facilities';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
   username: String,
-  buildingName: {
-    type: String,
-    allowedValues: buildingNames,
-  },
-  typeOfFacility: {
-    type: String,
-    allowedValues: ['Restroom', 'Water Fountain', 'Study Space'],
-  },
   rating: {
     type: Number,
     min: 1,
     max: 5,
   },
   review: String,
+  facilityID: {
+    type: String,
+    optional: true,
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddReview page for adding a document. */
 const AddReview = () => {
-  // On submit, insert the data.
+  const { facilityID } = useParams();
+
+  const updateFacilityAvgRating = (reviews) => {
+    const totalRatings = reviews.reduce((total, r) => total + r.rating, 0);
+    const newAvgRating = reviews.length > 0 ? totalRatings / reviews.length : 0;
+
+    Facilities.collection.update({ _id: facilityID }, { $set: { avgRating: newAvgRating } });
+  };
+
+  const { ready, reviews } = useTracker(() => {
+    const subscription = Meteor.subscribe(Reviews.userPublicationName);
+
+    const facilityReviews = Reviews.collection.find({ facilityID }).fetch();
+    const rdy = subscription.ready();
+
+    return {
+      ready: rdy,
+      reviews: facilityReviews,
+    };
+  }, [facilityID]);
+
   const submit = (data, formRef) => {
-    const { username, buildingName, typeOfFacility, rating, review } = data;
+    const { username, rating, review } = data;
 
     Reviews.collection.insert(
-      { username, buildingName, typeOfFacility, rating, review },
+      { username, rating, review, facilityID },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Review added successfully', 'success');
+          updateFacilityAvgRating(reviews);
           formRef.reset();
         }
       },
     );
   };
+
+  useEffect(() => {
+    if (ready) {
+      updateFacilityAvgRating(reviews);
+    }
+  }, [ready, reviews]);
 
   // Render the form.
   let fRef = null;
@@ -67,8 +85,6 @@ const AddReview = () => {
             <Card>
               <Card.Body>
                 <TextField name="username" />
-                <SelectField name="buildingName" />
-                <SelectField name="typeOfFacility" />
                 <NumField name="rating" />
                 <TextField name="review" />
                 <SubmitField value="Submit" />
