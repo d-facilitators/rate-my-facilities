@@ -12,14 +12,20 @@ class AddreviewPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  // async createReview(testController, username, typeOfFacility, rating, reviewText) {
-  //   await this.isDisplayed(testController);
-  //   await testController.typeText('#signup-form-username', username);
-  //   await testController.typeText('#signup-form-email', typeOfFacility);
-  //   await testController.typeText('#signup-form-password', rating);
-  //   await testController.typeText('#signup-form-password', reviewText);
-  //   await testController.click('#signup-form-submit input.btn.btn-primary');
-  // }
+  // TODO
+  async createReview(testController, username) {
+    const rating = 4;
+    const reviewText = 'Sample review for a given facility.';
+    await this.isDisplayed(testController);
+    await testController.typeText('#review-username', username);
+    const buildingSelector = Selector('#review-building');
+    const facilitySelector = Selector('#review-typeOfFacility');
+    await testController.click(buildingSelector.withText('POST'));
+    await testController.click(facilitySelector.withText('Restroom'));
+    await testController.typeText('#review-rating', rating);
+    await testController.typeText('#review-reviewText', reviewText);
+    await testController.click('#review-submit input.btn.btn-primary');
+  }
 }
 
 export const addreviewPage = new AddreviewPage();

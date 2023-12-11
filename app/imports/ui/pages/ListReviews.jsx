@@ -49,7 +49,7 @@ const ListReviews = () => {
 
       {ready ? (
         <>
-          <SubmitReview>Submit Review</SubmitReview>
+          <SubmitReview id="submit-review-button">Submit Review</SubmitReview>
 
           {/* All Reviews Section */}
           <section className="mt-4">

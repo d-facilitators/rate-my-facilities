@@ -66,12 +66,12 @@ const AddReview = () => {
           <AutoForm ref={(ref) => { fRef = ref; }} schema={bridge} onSubmit={(data) => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <TextField name="username" />
-                <SelectField name="buildingName" />
-                <SelectField name="typeOfFacility" />
-                <NumField name="rating" />
-                <TextField name="review" />
-                <SubmitField value="Submit" />
+                <TextField id="review-username" name="username" />
+                <SelectField id="review-building" name="buildingName" />
+                <SelectField id="review-typeOfFacility" name="typeOfFacility" />
+                <NumField id="review-rating" name="rating" />
+                <TextField id="review-reviewText" name="review" />
+                <SubmitField id="review-submit" value="Submit" />
                 <ErrorsField />
               </Card.Body>
             </Card>

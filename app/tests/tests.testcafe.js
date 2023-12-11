@@ -13,7 +13,6 @@ import { addreviewPage } from './addreview.page';
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'johnfoo', email: 'john@foo.com', password: 'changeme' };
 /** Test review from one of the sample users defined in settings.development.json. */
-const review = { username: 'johnfoo', typeOfFacility: 'Restroom', rating: 4, reviewText: 'This is a test review' };
 
 fixture('rate-my-facilities localhost test with default db')
   .page('http://localhost:3000');
@@ -70,7 +69,7 @@ test('Test that add facility page displays', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-// TODO add an example review
+// TODO
 test('Test that adding a review from the ratings page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
@@ -79,7 +78,7 @@ test('Test that adding a review from the ratings page works', async (testControl
   await reviewsPage.isDisplayed(testController);
   await reviewsPage.gotoAddReviewPage(testController);
   await addreviewPage.isDisplayed(testController);
-  await ratingsPage.createReview(testController, review.username, review.typeOfFacility, review.rating, review.reviewText);
+  await addreviewPage.createReview(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
@@ -90,7 +89,7 @@ test('Test that buttons of the individual facility page function properly', asyn
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoReviewsPage(testController);
   await reviewsPage.isDisplayed(testController);
-  await testController.click('#submit-review-button');
+  await reviewsPage.gotoAddReviewPage(testController);
   await addreviewPage.isDisplayed(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
