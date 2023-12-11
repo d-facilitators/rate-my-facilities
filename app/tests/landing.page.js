@@ -17,6 +17,7 @@ class LandingPage {
     await testController.typeText('#building-search', 'POST');
     await testController.pressKey('enter');
     await buildingsPage.isDisplayed(testController);
+    await buildingsPage.closePopup(testController);
   }
 }
 

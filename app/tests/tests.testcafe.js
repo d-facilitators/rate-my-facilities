@@ -18,7 +18,11 @@ fixture('rate-my-facilities localhost test with default db')
 
 test('Test that landing page shows up', async (testController) => {
   await landingPage.isDisplayed(testController);
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
   await landingPage.search(testController);
+  await navBar.logout(testController);
 });
 
 test('Test that signin and signout work', async (testController) => {

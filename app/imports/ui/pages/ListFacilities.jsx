@@ -161,7 +161,7 @@ const ListFacilities = () => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseInfo}>
+          <Button id="close" variant="secondary" onClick={handleCloseInfo}>
             Close
           </Button>
         </Modal.Footer>

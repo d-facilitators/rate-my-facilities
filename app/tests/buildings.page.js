@@ -10,6 +10,10 @@ class BuildingsPage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
+
+  async closePopup(testController) {
+    await testController.click('#close');
+  }
 }
 
 export const buildingsPage = new BuildingsPage();
