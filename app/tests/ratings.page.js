@@ -10,6 +10,10 @@ class RatingsPage {
   async isDisplayed(testController) {
     await testController.expect(this.pageSelector.exists).ok();
   }
+
+  async gotoAddReviewPage(testController) {
+    await testController.click('#submit-review-button');
+  }
 }
 
 export const ratingsPage = new RatingsPage();

@@ -11,6 +11,8 @@ import { addreviewPage } from './addreview.page';
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const credentials = { username: 'johnfoo', email: 'john@foo.com', password: 'changeme' };
+/** Test review from one of the sample users defined in settings.development.json. */
+const review = { username: 'johnfoo', typeOfFacility: 'Restroom', rating: 4, reviewText: 'This is a test review' };
 
 fixture('rate-my-facilities localhost test with default db')
   .page('http://localhost:3000');
@@ -40,7 +42,7 @@ test('Test that signup page, then logout works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that ratings page works', async (testController) => {
+test('Test that ratings page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoRatingsPage(testController);
@@ -49,7 +51,7 @@ test('Test that ratings page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that buildings page works', async (testController) => {
+test('Test that buildings page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoBuildingsPage(testController);
@@ -58,7 +60,7 @@ test('Test that buildings page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that add facility page works', async (testController) => {
+test('Test that add facility page displays', async (testController) => {
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddFacilityPage(testController);
@@ -67,11 +69,27 @@ test('Test that add facility page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that add review page works', async (testController) => {
+// TODO add an example review
+test('Test that adding a review from the ratings page works', async (testController) => {
+  await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoRatingsPage(testController);
   await ratingsPage.isDisplayed(testController);
+  await ratingsPage.gotoAddReviewPage(testController);
+  await addreviewPage.isDisplayed(testController);
+  // await ratingsPage.createReview(testController, review.username, review.typeOfFacility, review.rating, review.reviewText);
+  await navBar.logout(testController);
+  await signoutPage.isDisplayed(testController);
+});
+
+// TODO test functionality on the review added in the previous test
+test('Test that buttons of the individual facility page function properly', async (testController) => {
+  await navBar.gotoSignInPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.gotoRatingsPage(testController);
+  await ratingsPage.isDisplayed(testController);
+
   await testController.click('#submit-review-button');
   await addreviewPage.isDisplayed(testController);
   await navBar.logout(testController);
