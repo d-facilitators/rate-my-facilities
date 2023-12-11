@@ -52,7 +52,7 @@ const IndividualFacility = () => {
                     This facility has an active alert!
                   </div>
                 )}
-                {(facilityItem.statusUpdate === 'Issue confirmed') && (
+                {(facilityItem.statusUpdate === 'Issue reported') && (
                   <div>
                     <ExclamationCircleFill style={{ color: '#FFDF51' }} />
                     This facility has a issue pending confirmation.

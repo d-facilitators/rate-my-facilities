@@ -60,7 +60,7 @@ const AddFacility = () => {
     const photosArray = photos || ['/images/cc.jpg'];
 
     const newRoute = Facilities.collection.insert(
-      { facilityType, building, avgRating: 0, floor, photos: photosArray, statusUpdate: false, owner },
+      { facilityType, building, avgRating: 0, floor, photos: photosArray, statusUpdate: 'No issue', owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');

@@ -38,13 +38,19 @@ const StatusUpdatesAdmin = () => {
               </tr>
             </thead>
             <tbody>
-              {facilityList.map((facility) => ((facility.statusUpdate !== 'No issue') ? (<StatusesAdmin key={facility._id} facility={facility} />) : null))}
+              {facilityList.map((facility) => (<StatusesAdmin key={facility._id} facility={facility} />))}
             </tbody>
           </Table>
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner />);
+  ) : (
+    <tr>
+      <td colSpan="5">
+        <LoadingSpinner />
+      </td>
+    </tr>
+  ));
 };
 
 export default StatusUpdatesAdmin;
