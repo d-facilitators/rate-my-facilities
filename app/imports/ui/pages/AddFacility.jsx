@@ -11,7 +11,7 @@ import { Facilities } from '../../api/facility/Facilities';
 
 const FacilityImages = new FilesCollection({
   collectionName: 'FacilityImages',
-  allowClientCode: false, // Disallow direct client file access
+  allowClientCode: true,
   onBeforeUpload(file) {
     if (file.size <= 10485760 && /png|jpg|jpeg/i.test(file.ext)) {
       return true;
@@ -128,5 +128,4 @@ const AddFacility = () => {
       </Container>
     );
 };
-
 export default AddFacility;
