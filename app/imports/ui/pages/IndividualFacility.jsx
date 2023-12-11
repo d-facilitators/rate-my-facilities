@@ -46,10 +46,16 @@ const IndividualFacility = () => {
                 <StarFill style={{ color: '#6FB879' }} /> {facilityItem.avgRating}/5 <a href="http://localhost:3000/facility" style={{ color: '#6FB879' }}>Rate this facility</a>
               </Col>
               <Col>
-                {facilityItem.statusUpdate && (
+                {(facilityItem.statusUpdate === 'Issue confirmed') && (
                   <div>
                     <ExclamationCircleFill style={{ color: '#FA7070' }} />
                     This facility has an active alert!
+                  </div>
+                )}
+                {(facilityItem.statusUpdate === 'Issue reported') && (
+                  <div>
+                    <ExclamationCircleFill style={{ color: '#FFDF51' }} />
+                    This facility has a issue pending confirmation.
                   </div>
                 )}
               </Col>

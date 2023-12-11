@@ -17,7 +17,10 @@ class FacilitiesCollection {
       avgRating: Number,
       photos: { type: Array, optional: false },
       'photos.$': { type: String },
-      statusUpdate: Boolean,
+      statusUpdate: {
+        type: String,
+        allowedValues: ['Issue confirmed', 'Issue reported', 'No issue'],
+      },
       floor: Number,
     });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
