@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Container, Row, Modal, Button } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Facilities } from '../../api/facility/Facilities';
@@ -10,6 +10,12 @@ const ListFacilities = () => {
   const location = useLocation();
   const [showInfo, setShowInfo] = useState(false);
   const [selectedBuilding, setSelectedBuilding] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Function to handle building not found
+  const handleBuildingNotFound = () => {
+    setShowPopup(true);
+  };
 
   const buildings = [
     { name: 'Bilger Hall', imagePath: '/images/bilger-hall.jpg', facilitiesList: {} },
@@ -30,7 +36,6 @@ const ListFacilities = () => {
     const groupedFacilities = {};
     facilityItems.forEach(facility => {
       const { building, facilityType } = facility;
-      console.log(facilityType);
       if (!groupedFacilities[building]) {
         groupedFacilities[building] = {
           Restroom: [],
@@ -50,7 +55,6 @@ const ListFacilities = () => {
       facilitiesList: groupedFacilities[building.name] || {},
     }));
 
-    console.log(buildingsWithFacilities);
     return {
       facilities: buildingsWithFacilities,
       ready: rdy,
@@ -58,19 +62,23 @@ const ListFacilities = () => {
   }, []);
 
   useEffect(() => {
-    // Parse the query parameter from the URL
-    const queryParams = new URLSearchParams(location.search);
-    const buildingName = queryParams.get('name');
+    if (ready) {
+      // Parse the query parameter from the URL
+      const queryParams = new URLSearchParams(location.search);
+      const buildingName = queryParams.get('name');
 
-    // Search for facility name in database
-    const found = buildings.find((building) => building.name === buildingName);
+      // Search for facility name in database
+      const found = facilities.find((building) => building.name === buildingName);
 
-    // Show the popup if building name was found
-    if (found) {
-      setSelectedBuilding(found);
-      setShowInfo(true);
+      // Show the popup if building name was found
+      if (found) {
+        setSelectedBuilding(found);
+        setShowInfo(true);
+      } else {
+        handleBuildingNotFound();
+      }
     }
-  }, [location.search]);
+  }, [location.search, ready]);
 
   const handleInfoClick = (building) => {
     setShowInfo(true);
@@ -142,7 +150,9 @@ const ListFacilities = () => {
                       <ul>
                         {facilitiesList.sort((a, b) => b.avgRating - a.avgRating).map((facility, index) => (
                           <li key={index}>
-                            Floor {facility.floor} - Avg Rating: {facility.avgRating}
+                            <Link to={`/facility/${facility._id}`}>
+                              Floor {facility.floor} - Avg Rating: {facility.avgRating}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -159,6 +169,22 @@ const ListFacilities = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {/* Pop up if building not found */}
+      <Modal show={showPopup} onHide={() => setShowPopup(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Building not found!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Please check the building name and try again.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowPopup(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
     </Container>
   ) : <LoadingSpinner />);
 };
