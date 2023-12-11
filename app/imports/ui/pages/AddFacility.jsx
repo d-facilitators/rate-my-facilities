@@ -6,19 +6,7 @@ import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { FilesCollection } from 'meteor/ostrio:files';
 import { Facilities } from '../../api/facility/Facilities';
-
-const FacilityImages = new FilesCollection({
-  collectionName: 'FacilityImages',
-  allowClientCode: true,
-  onBeforeUpload(file) {
-    if (file.size <= 10485760 && /png|jpg|jpeg/i.test(file.ext)) {
-      return true;
-    }
-    return 'Please upload an image, with size equal or less than 10MB';
-  },
-});
 
 const buildingNames = [
   'Bilger Hall',
@@ -34,6 +22,8 @@ const buildingNamesOptions = buildingNames.map(name => ({ label: name, value: na
 const AddFacility = () => {
   const [redirect, setRedirect] = useState(false);
   const [route, setRoute] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const formSchema = new SimpleSchema({
     facilityType: String,
     building: {
@@ -50,15 +40,16 @@ const AddFacility = () => {
     },
     'photos.$': { type: String },
   });
+
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   const submit = (data, formRef) => {
+    // eslint-disable-next-line no-unused-vars
     const { facilityType, building, floor, photos } = data;
     const owner = Meteor.user().username;
 
-    // Check if photos is provided, otherwise set a default image
-    const photosArray = photos || ['/images/cc.jpg'];
-
+    // Check if photos are provided, otherwise set a default image
+    const photosArray = selectedImage ? [selectedImage] : ['/images/cc.jpg'];
     const newRoute = Facilities.collection.insert(
       { facilityType, building, avgRating: 0, floor, photos: photosArray, statusUpdate: false, owner },
       (error) => {
@@ -74,24 +65,19 @@ const AddFacility = () => {
     setRedirect(true);
   };
 
-  // Function to handle file uploads
-  const handleFileUpload = (file) => {
-    const upload = FacilityImages.insert({
-      file,
-      streams: 'dynamic',
-      chunkSize: 'dynamic',
-      allowWebWorkers: true,
-    });
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
 
-    upload.on('end', (error, fileObj) => {
-      if (!error) {
-        // Set the photos field with the file URL
-        // eslint-disable-next-line no-undef,no-unused-expressions
-        formRef && formRef.onChange('photos', fileObj.link());
-      }
-    });
+    if (file) {
+      // Use FileReader to read the selected image as a data URL
+      const reader = new FileReader();
 
-    upload.start();
+      reader.onload = (readerEvent) => {
+        setSelectedImage(readerEvent.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
   };
 
   let fRef = null;
@@ -110,7 +96,8 @@ const AddFacility = () => {
                   <SelectField name="building" options={buildingNamesOptions} />
                   <NumField name="floor" decimal={null} />
                   {/* Use a file input for image uploads */}
-                  <input type="file" onChange={(e) => handleFileUpload(e.target.files[0])} accept="image/*" />
+                  <input type="file" onChange={handleFileUpload} accept="image/*" />
+                  {selectedImage && <img src={selectedImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '200px' }} />}
                   <ErrorsField />
                   <button type="submit" value="Submit" className="btn btn-success">Submit</button>
                 </Card.Body>
@@ -121,4 +108,5 @@ const AddFacility = () => {
       </Container>
     );
 };
+
 export default AddFacility;
