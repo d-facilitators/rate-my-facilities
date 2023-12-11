@@ -9,6 +9,11 @@ class ReviewsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
+      building: String,
+      facilityType: {
+        type: String,
+        allowedValues: ['Restroom', 'Water fountain', 'Study space', 'Microwave'],
+      },
       username: String,
       rating: {
         type: Number,

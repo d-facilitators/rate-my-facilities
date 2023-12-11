@@ -10,6 +10,7 @@ import SimpleSchema from 'simpl-schema';
 import { useParams } from 'react-router-dom';
 import { Reviews } from '../../api/review/Review';
 import { Facilities } from '../../api/facility/Facilities';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -34,28 +35,34 @@ const AddReview = () => {
 
   const updateFacilityAvgRating = (reviews) => {
     const totalRatings = reviews.reduce((total, r) => total + r.rating, 0);
-    const newAvgRating = reviews.length > 0 ? totalRatings / reviews.length : 0;
+    const newAvgRating = (reviews.length > 0 ? totalRatings / reviews.length : 0).toFixed(2);
 
     Facilities.collection.update({ _id: facilityID }, { $set: { avgRating: newAvgRating } });
   };
 
-  const { ready, reviews } = useTracker(() => {
-    const subscription = Meteor.subscribe(Reviews.userPublicationName);
+  const { ready, reviews, facility } = useTracker(() => {
+    const subscription1 = Meteor.subscribe(Reviews.userPublicationName);
+    const subscription2 = Meteor.subscribe(Facilities.userPublicationName);
 
     const facilityReviews = Reviews.collection.find({ facilityID }).fetch();
-    const rdy = subscription.ready();
+    const facilityData = Facilities.collection.findOne({ _id: facilityID });
+    const rdy1 = subscription1.ready();
+    const rdy2 = subscription2.ready();
 
     return {
-      ready: rdy,
+      ready: rdy1 && rdy2,
+      facility: facilityData,
       reviews: facilityReviews,
     };
   }, [facilityID]);
 
   const submit = (data, formRef) => {
+    console.log(facility);
     const { username, rating, review } = data;
+    const { building, facilityType } = facility;
 
     Reviews.collection.insert(
-      { username, rating, review, facilityID },
+      { building, facilityType, username, rating, review, facilityID },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -76,7 +83,7 @@ const AddReview = () => {
 
   // Render the form.
   let fRef = null;
-  return (
+  return (ready ? (
     <Container className="py-3" id="add-review">
       <Row className="justify-content-center">
         <Col xs={5}>
@@ -95,7 +102,7 @@ const AddReview = () => {
         </Col>
       </Row>
     </Container>
-  );
+  ) : <LoadingSpinner />);
 };
 
 export default AddReview;

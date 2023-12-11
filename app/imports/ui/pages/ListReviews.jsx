@@ -25,7 +25,7 @@ const ListReviews = () => {
 
     const reviewItems = Reviews.collection.find(
       {
-        typeOfFacility: selectedFacilityType === 'all' ? { $exists: true } : selectedFacilityType,
+        facilityType: selectedFacilityType === 'all' ? { $exists: true } : selectedFacilityType,
       },
       { sort: sortOption },
     ).fetch();
@@ -71,14 +71,14 @@ const ListReviews = () => {
                 Restroom
               </Button>
               <Button
-                variant={selectedFacilityType === 'Water Fountain' ? 'primary' : 'secondary'}
-                onClick={() => handleFacilityTypeFilter('Water Fountain')}
+                variant={selectedFacilityType === 'Water fountain' ? 'primary' : 'secondary'}
+                onClick={() => handleFacilityTypeFilter('Water fountain')}
               >
                 Water Fountain
               </Button>
               <Button
-                variant={selectedFacilityType === 'Study Space' ? 'primary' : 'secondary'}
-                onClick={() => handleFacilityTypeFilter('Study Space')}
+                variant={selectedFacilityType === 'Study space' ? 'primary' : 'secondary'}
+                onClick={() => handleFacilityTypeFilter('Study space')}
               >
                 Study Space
               </Button>
@@ -102,7 +102,7 @@ const ListReviews = () => {
                     <Card.Body>
                       <Card.Title>
                         <Link to={`/facility/${review.facilityID}`}>
-                          {review.buildingName}: {review.typeOfFacility}
+                          {review.building}: {review.facilityType}
                         </Link>
                       </Card.Title>
                       <Card.Text>

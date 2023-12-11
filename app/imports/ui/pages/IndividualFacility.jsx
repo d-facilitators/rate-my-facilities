@@ -93,7 +93,7 @@ const IndividualFacility = () => {
             </Row>
             <hr style={{ backgroundColor: '#6FB879', height: 3, border: 'none' }} />
             <Row>
-              <Col>
+              <Col style={{ maxHeight: '250px', overflowY: 'auto' }}>
                 <h3>Reviews</h3>
                 {reviews.map((review, index) => (
                   <div key={index}>
@@ -103,9 +103,9 @@ const IndividualFacility = () => {
                     <p>&quot;{review.review}&quot;</p>
                   </div>
                 ))}
-                <Link to="http://localhost:3000/reviews" style={{ color: '#6FB879' }}>
+                <a href="http://localhost:3000/reviews" style={{ color: '#6FB879' }}>
                   See reviews for all facilities
-                </Link>
+                </a>
               </Col>
             </Row>
           </Col>
