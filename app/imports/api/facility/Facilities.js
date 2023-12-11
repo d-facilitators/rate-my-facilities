@@ -12,7 +12,7 @@ class FacilitiesCollection {
       building: String,
       facilityType: {
         type: String,
-        allowedValues: ['Restroom', 'Water fountain', 'Study space'],
+        allowedValues: ['Restroom', 'Water fountain', 'Study space', 'Microwave'],
       },
       avgRating: Number,
       photos: { type: Array, optional: false },

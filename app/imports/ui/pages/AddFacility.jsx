@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { AutoForm, ErrorsField, NumField, SelectField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, NumField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -11,7 +11,7 @@ import { Facilities } from '../../api/facility/Facilities';
 
 const FacilityImages = new FilesCollection({
   collectionName: 'FacilityImages',
-  allowClientCode: false, // Disallow direct client file access
+  allowClientCode: true,
   onBeforeUpload(file) {
     if (file.size <= 10485760 && /png|jpg|jpeg/i.test(file.ext)) {
       return true;
@@ -29,7 +29,14 @@ const buildingNames = [
   'Shidler College of Business',
 ];
 
+const facilityTypes = [
+  'Restroom',
+  'Water fountain',
+  'Study space',
+];
+
 const buildingNamesOptions = buildingNames.map(name => ({ label: name, value: name }));
+const facilityTypesOptions = facilityTypes.map(name => ({ label: name, value: name }));
 
 const AddFacility = () => {
   const [redirect, setRedirect] = useState(false);
@@ -106,7 +113,7 @@ const AddFacility = () => {
             <AutoForm ref={(ref) => { fRef = ref; }} schema={bridge} onSubmit={(data) => submit(data, fRef)}>
               <Card className="backgrnd" style={{ minHeight: '500px' }}>
                 <Card.Body>
-                  <TextField name="facilityType" />
+                  <SelectField name="facilityType" options={facilityTypesOptions} />
                   <SelectField name="building" options={buildingNamesOptions} />
                   <NumField name="floor" decimal={null} />
                   {/* Use a file input for image uploads */}
@@ -121,5 +128,4 @@ const AddFacility = () => {
       </Container>
     );
 };
-
 export default AddFacility;
