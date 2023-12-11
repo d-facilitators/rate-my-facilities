@@ -12,11 +12,6 @@ const ListFacilities = () => {
   const [selectedBuilding, setSelectedBuilding] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  // Function to handle building not found
-  const handleBuildingNotFound = () => {
-    setShowPopup(true);
-  };
-
   const buildings = [
     { name: 'Bilger Hall', imagePath: '/images/bilger-hall.jpg', facilitiesList: {} },
     { name: 'Campus Center', imagePath: '/images/cc.jpg', facilitiesList: {} },
@@ -74,8 +69,10 @@ const ListFacilities = () => {
       if (found) {
         setSelectedBuilding(found);
         setShowInfo(true);
+      } else if (!found && buildingName) {
+        setShowPopup(true);
       } else {
-        handleBuildingNotFound();
+        setShowPopup(false);
       }
     }
   }, [location.search, ready]);
