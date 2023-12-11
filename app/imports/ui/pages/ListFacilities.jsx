@@ -148,7 +148,7 @@ const ListFacilities = () => {
                         {facilitiesList.sort((a, b) => b.avgRating - a.avgRating).map((facility, index) => (
                           <li key={index}>
                             <Link to={`/facility/${facility._id}`}>
-                              Floor {facility.floor} - Avg Rating: {facility.avgRating}
+                              Floor {facility.floor} - Rating: {facility.avgRating}
                             </Link>
                           </li>
                         ))}
