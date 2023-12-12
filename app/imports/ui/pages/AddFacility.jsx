@@ -99,14 +99,14 @@ const AddFacility = () => {
             <AutoForm ref={(ref) => { fRef = ref; }} schema={bridge} onSubmit={(data) => submit(data, fRef)}>
               <Card className="backgrnd" style={{ minHeight: '500px' }}>
                 <Card.Body>
-                  <SelectField name="facilityType" options={facilityTypesOptions} />
-                  <SelectField name="building" options={buildingNamesOptions} />
-                  <NumField name="floor" decimal={null} />
+                  <SelectField id="choose-facilityType" name="facilityType" options={facilityTypesOptions} />
+                  <SelectField id="choose-building" name="building" options={buildingNamesOptions} />
+                  <NumField id="choose-floor" name="floor" decimal={null} />
                   {/* Use a file input for image uploads */}
                   <input type="file" onChange={handleFileUpload} accept="image/*" />
                   {selectedImage && <img src={selectedImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '200px' }} />}
                   <ErrorsField />
-                  <button type="submit" value="Submit" className="btn btn-success">Submit</button>
+                  <button id="addFacility-form-submit" type="submit" value="Submit" className="btn btn-success">Submit</button>
                 </Card.Body>
               </Card>
             </AutoForm>

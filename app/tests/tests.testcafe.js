@@ -68,6 +68,7 @@ test('Test that add facility page works', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.gotoAddFacilityPage(testController);
   await addFacilityPage.isDisplayed(testController);
+  await addFacilityPage.addFacility(testController);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
