@@ -35,8 +35,8 @@ const AddReview = () => {
   const { facilityID } = useParams();
 
   const updateFacilityAvgRating = (reviews, rating) => {
-    const totalRatings = reviews.reduce((total, r) => total + r.rating + rating, 0);
-    const newAvgRating = (reviews.length > 0 ? totalRatings / reviews.length : 0).toFixed(2);
+    const totalRatings = reviews.reduce((total, r) => total + r.rating, 0);
+    const newAvgRating = (reviews.length >= 0 ? (totalRatings + rating) / (reviews.length + 1) : 0).toFixed(2);
 
     Facilities.collection.update({ _id: facilityID }, { $set: { avgRating: newAvgRating } });
   };
