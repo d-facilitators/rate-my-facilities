@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Carousel, Col, Container, Row, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -31,6 +31,27 @@ const IndividualFacility = () => {
       ready: rdy1 && rdy2,
     };
   }, []);
+
+  const fileInputRef = useRef(null);
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && ready) {
+      // Perform actions with the file (e.g., read the file and add it to the photos array)
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageUrl = e.target.result;
+        const updatedPhotos = [...facilityItem.photos, imageUrl]; // Create a new array with the added imageUrl
+        Facilities.collection.update({ _id: facilityItem._id }, { $set: { photos: updatedPhotos } });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
   return (ready ? (
     <Container key={facilityItem._id}>
       <Container style={{ paddingRight: 0, paddingLeft: 0 }}>
@@ -76,7 +97,14 @@ const IndividualFacility = () => {
                 </Link>
               </Col>
               <Col>
-                <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref={fileInputRef}
+                  style={{ display: 'none' }}
+                  onChange={handleFileUpload}
+                />
+                <Button style={{ backgroundColor: '#6FB879', border: 'none' }} onClick={handleButtonClick}>
                   <CameraFill /> Upload a photo
                 </Button>
               </Col>
