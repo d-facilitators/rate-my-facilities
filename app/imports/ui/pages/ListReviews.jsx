@@ -91,7 +91,7 @@ const ListReviews = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onClick={handleSortByRating}>Toggle Sorting</Dropdown.Item>
+                <Dropdown.Item onClick={handleSortByRating}>Change Sort Mode</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
 

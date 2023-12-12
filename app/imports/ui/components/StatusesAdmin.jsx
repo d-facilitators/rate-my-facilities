@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { Facilities } from '../../api/facility/Facilities';
 import LoadingSpinner from './LoadingSpinner';
+import swal from 'sweetalert';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/StatusUpdatesAdmin.jsx. */
 const StatusesAdmin = ({ facility }) => {
@@ -27,6 +28,7 @@ const StatusesAdmin = ({ facility }) => {
       await Meteor.call('updateFacility', facility._id);
       // Optional: Update the local state or trigger a re-fetch of data
     } finally {
+      swal('Success', 'Status updated successfully', 'success');
       setIsUpdating(false);
     }
   };

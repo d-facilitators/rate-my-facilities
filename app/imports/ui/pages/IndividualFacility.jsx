@@ -113,11 +113,6 @@ const IndividualFacility = () => {
                   <ExclamationCircleFill /> Report an issue
                 </Button>
               </Col>
-              <Col>
-                <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
-                  <BookmarkHeartFill /> Add to my favorites
-                </Button>
-              </Col>
             </Row>
             <hr style={{ backgroundColor: '#6FB879', height: 3, border: 'none' }} />
             <Row>

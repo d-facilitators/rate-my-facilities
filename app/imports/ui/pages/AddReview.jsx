@@ -57,7 +57,6 @@ const AddReview = () => {
   }, [facilityID]);
 
   const submit = (data, formRef) => {
-    console.log(facility);
     const { username, rating, review } = data;
     const { building, facilityType } = facility;
 
