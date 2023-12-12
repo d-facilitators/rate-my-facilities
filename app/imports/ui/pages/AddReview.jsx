@@ -34,8 +34,8 @@ const AddReview = () => {
   const [route, setRoute] = useState('');
   const { facilityID } = useParams();
 
-  const updateFacilityAvgRating = (reviews) => {
-    const totalRatings = reviews.reduce((total, r) => total + r.rating, 0);
+  const updateFacilityAvgRating = (reviews, rating) => {
+    const totalRatings = reviews.reduce((total, r) => total + r.rating + rating, 0);
     const newAvgRating = (reviews.length > 0 ? totalRatings / reviews.length : 0).toFixed(2);
 
     Facilities.collection.update({ _id: facilityID }, { $set: { avgRating: newAvgRating } });
@@ -69,7 +69,7 @@ const AddReview = () => {
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Review added successfully', 'success');
-          updateFacilityAvgRating(reviews);
+          updateFacilityAvgRating(reviews, rating);
           formRef.reset();
         }
       },
