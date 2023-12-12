@@ -74,7 +74,7 @@ test('Test that add facility page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test.only('Test that add review page works', async (testController) => {
+test('Test that add review page works', async (testController) => {
   await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
