@@ -7,7 +7,9 @@ import { navBar } from './navbar.component';
 import { buildingsPage } from './buildings.page';
 import { addFacilityPage } from './addfacility.page';
 import { reviewsPage } from './reviews.page';
-// import { addreviewPage } from './addreview.page';
+import { addreviewPage } from './addreview.page';
+import { individualFacilityPage } from './individualfacility.page';
+import { Selector } from 'testcafe';
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
@@ -73,11 +75,18 @@ test('Test that add facility page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test that add review page works', async (testController) => {
+test.only('Test that add review page works', async (testController) => {
+  await navBar.ensureLogout(testController);
   await navBar.gotoSignInPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
-  await navBar.gotoReviewsPage(testController);
-  await reviewsPage.isDisplayed(testController);
+  await navBar.gotoAddFacilityPage(testController);
+  await addFacilityPage.isDisplayed(testController);
+  await addFacilityPage.addFacility(testController);
+  await individualFacilityPage.isDisplayed(testController);
+  await individualFacilityPage.gotoAddReviewPage(testController);
+  await addreviewPage.isDisplayed(testController);
+  await addreviewPage.createReview(testController, credentials.username);
+  await testController.click(Selector('body'), { offsetX: 5, offsetY: 5 });
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
