@@ -22,4 +22,14 @@ Meteor.methods({
       );
     }
   },
+  userStatusWarning: function (facilityId) {
+    check(facilityId, String);
+    const thisFacility = Facilities.collection.findOne(facilityId);
+    if (thisFacility.statusUpdate === 'No issue') {
+      Facilities.collection.update(
+        { _id: facilityId },
+        { $set: { statusUpdate: 'Issue reported' } },
+      );
+    }
+  },
 });

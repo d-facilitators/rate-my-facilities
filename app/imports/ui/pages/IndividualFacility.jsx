@@ -1,15 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Button, Carousel, Col, Container, Row, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { BookmarkHeartFill, CameraFill, ExclamationCircleFill, PencilSquare, PersonCircle, StarFill } from 'react-bootstrap-icons';
+import { CameraFill, ExclamationCircleFill, PencilSquare, PersonCircle, StarFill } from 'react-bootstrap-icons';
+import swal from 'sweetalert';
 import { Facilities } from '../../api/facility/Facilities';
 import { Reviews } from '../../api/review/Review';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const IndividualFacility = () => {
+  const [isUpdating, setIsUpdating] = useState(false);
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, facilityItem, reviews } = useTracker(() => {
@@ -50,6 +52,19 @@ const IndividualFacility = () => {
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
+  };
+
+  const handleStatusUpdate = async () => {
+    setIsUpdating(true);
+
+    try {
+      // Perform the MongoDB update operation
+      await Meteor.call('userStatusWarning', facilityItem._id);
+      // Optional: Update the local state or trigger a re-fetch of data
+    } finally {
+      swal('Success', 'Status updated successfully', 'success');
+      setIsUpdating(false);
+    }
   };
 
   return (ready ? (
@@ -109,7 +124,7 @@ const IndividualFacility = () => {
                 </Button>
               </Col>
               <Col>
-                <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
+                <Button style={{ backgroundColor: '#6FB879', border: 'none' }} onClick={handleStatusUpdate} disabled={isUpdating}>
                   <ExclamationCircleFill /> Report an issue
                 </Button>
               </Col>

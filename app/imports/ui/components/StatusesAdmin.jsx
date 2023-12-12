@@ -3,9 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import swal from 'sweetalert';
 import { Facilities } from '../../api/facility/Facilities';
 import LoadingSpinner from './LoadingSpinner';
-import swal from 'sweetalert';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/StatusUpdatesAdmin.jsx. */
 const StatusesAdmin = ({ facility }) => {
