@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Card, Col, Container, Row } from 'react-bootstrap';
@@ -7,10 +7,9 @@ import swal from 'sweetalert';
 // import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { Reviews } from '../../api/review/Review';
 import { Facilities } from '../../api/facility/Facilities';
-import LoadingSpinner from '../components/LoadingSpinner';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
@@ -31,6 +30,8 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddReview page for adding a document. */
 const AddReview = () => {
+  const [redirect, setRedirect] = useState(false);
+  const [route, setRoute] = useState('');
   const { facilityID } = useParams();
 
   const updateFacilityAvgRating = (reviews) => {
@@ -57,9 +58,9 @@ const AddReview = () => {
   }, [facilityID]);
 
   const submit = (data, formRef) => {
-    console.log(facility);
     const { username, rating, review } = data;
     const { building, facilityType } = facility;
+    const newRoute = `${facilityID}`;
 
     Reviews.collection.insert(
       { building, facilityType, username, rating, review, facilityID },
@@ -73,6 +74,8 @@ const AddReview = () => {
         }
       },
     );
+    setRoute(newRoute);
+    setRedirect(true);
   };
 
   useEffect(() => {
@@ -83,7 +86,7 @@ const AddReview = () => {
 
   // Render the form.
   let fRef = null;
-  return (ready ? (
+  return redirect ? (<Navigate to={`/facility/${route}`} />) : (
     <Container className="py-3" id="add-review">
       <Row className="justify-content-center">
         <Col xs={5}>
@@ -102,7 +105,7 @@ const AddReview = () => {
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner />);
+  );
 };
 
 export default AddReview;

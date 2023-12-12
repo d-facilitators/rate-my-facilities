@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import swal from 'sweetalert';
 import { Facilities } from '../../api/facility/Facilities';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -27,6 +28,7 @@ const StatusesAdmin = ({ facility }) => {
       await Meteor.call('updateFacility', facility._id);
       // Optional: Update the local state or trigger a re-fetch of data
     } finally {
+      swal('Success', 'Status updated successfully', 'success');
       setIsUpdating(false);
     }
   };

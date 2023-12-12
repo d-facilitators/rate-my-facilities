@@ -110,7 +110,7 @@ const ListFacilities = () => {
 
                     {/* Info button */}
                     <Button variant="success" onClick={() => handleInfoClick(building)}>
-                      Building Info
+                      See facilities
                     </Button>
                   </div>
                 </div>

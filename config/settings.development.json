@@ -1,39 +1,15 @@
 {
   "defaultAccounts": [
-    { "username": "admin", "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "username": "johnfoo", "email": "john@foo.com", "password": "changeme" }
-  ],
-
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
-  "defaultBuildings": [
-    { "buildingName": "POST", "typeOfFacility": "Restroom", "numOfReviews": 1, "facilityFloor": 7 },
-    { "buildingName": "POST", "typeOfFacility": "Restroom", "numOfReviews": 1, "facilityFloor": 2 },
-    { "buildingName": "POST", "typeOfFacility": "Study Area", "numOfReviews": 1, "facilityFloor": 2 },
-    { "buildingName": "Campus Center", "typeOfFacility": "Water Fountain", "numOfReviews": 0, "facilityFloor": 2 },
-    { "buildingName": "Hamilton Library", "typeOfFacility": "Water Fountain", "numOfReviews": 3, "facilityFloor": 3 }
-  ],
-
-  "defaultFacilities": [
-    { "building": "POST", "facilityType": "Water fountain", "avgRating": 3.2, "photos": ["/images/waterfountain1.png", "/images/waterfountain2.png", "/images/waterfountain3.png"], "statusUpdate": "Issue confirmed", "floor": 3 }
-  ],
-
-  "defaultReviews": [
-    { "username": "John Doe", "building": "Hamilton Library", "facilityType": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "1" },
-    { "username": "Jane Doe", "building": "Hamilton Library", "facilityType": "Water fountain", "rating": 2, "review": "Dirty and smelly.", "floor": 2, "facilityID": "1" },
-    { "username": "John Doe", "building": "Hamilton Library", "facilityType": "Study space", "rating": 3, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "2" },
-    { "username": "Jane Doe", "building": "Hamilton Library", "facilityType": "Water fountain", "rating": 5, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "3" },
-    { "username": "John Doe", "building": "Hamilton Library", "facilityType": "Restroom", "rating": 1, "review": "Dirty and smelly.", "floor": 2, "facilityID": "4" },
-    { "username": "Jane Doe", "building": "Hamilton Library", "facilityType": "Study space", "rating": 4, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "5" },
-    { "username": "John Doe", "building": "Hamilton Library", "facilityType": "Water fountain", "rating": 2, "review": "Dirty and smelly.", "floor": 2, "facilityID": "6" },
-    { "username": "Jane Doe", "building": "Hamilton Library", "facilityType": "Restroom", "rating": 3, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "7" },
-    { "username": "John Doe", "building": "Hamilton Library", "facilityType": "Study space", "rating": 5, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "8" },
-    { "username": "Jane Doe", "building": "Hamilton Library", "facilityType": "Water fountain", "rating": 1, "review": "Dirty and smelly.", "floor": 2, "facilityID": "6"},
-    { "username": "John Doe", "building": "Hamilton Library", "facilityType": "Restroom", "rating": 4, "review": "Clean and well-maintained.", "floor": 2, "facilityID": "7" }
+    {
+      "username": "admin",
+      "email": "admin@foo.com",
+      "password": "changeme",
+      "role": "admin"
+    },
+    {
+      "username": "johnfoo",
+      "email": "john@foo.com",
+      "password": "changeme"
+    }
   ]
 }
