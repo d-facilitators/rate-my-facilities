@@ -68,7 +68,7 @@ const IndividualFacility = () => {
   };
 
   return (ready ? (
-    <Container key={facilityItem._id}>
+    <Container id="individual-facility-page" key={facilityItem._id}>
       <Container style={{ paddingRight: 0, paddingLeft: 0 }}>
         <Row>
           <Col>
@@ -106,7 +106,7 @@ const IndividualFacility = () => {
             <Row style={{ paddingTop: 20 }}>
               <Col>
                 <Link to={`/addreview/${facilityItem._id}`}>
-                  <Button style={{ backgroundColor: '#6FB879', border: 'none' }}>
+                  <Button id="write-review-button" style={{ backgroundColor: '#6FB879', border: 'none' }}>
                     <PencilSquare /> Write a review
                   </Button>
                 </Link>
