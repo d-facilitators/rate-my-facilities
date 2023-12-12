@@ -86,7 +86,7 @@ const IndividualFacility = () => {
             </Row>
             <Row style={{ paddingTop: 10 }}>
               <Col>
-                <StarFill style={{ color: '#6FB879' }} /> {facilityItem.avgRating}/5 <a href="http://localhost:3000/facility" style={{ color: '#6FB879' }}>Rate this facility</a>
+                <StarFill style={{ color: '#6FB879' }} /> {facilityItem.avgRating}/5 <Link style={{ color: '#6FB879' }} to={`/addreview/${facilityItem._id}`}>Rate this facility</Link>
               </Col>
               <Col>
                 {(facilityItem.statusUpdate === 'Issue confirmed') && (
@@ -141,9 +141,9 @@ const IndividualFacility = () => {
                     <p>&quot;{review.review}&quot;</p>
                   </div>
                 ))}
-                <a href="http://localhost:3000/reviews" style={{ color: '#6FB879' }}>
+                <Link to="/reviews" style={{ color: '#6FB879' }}>
                   See reviews for all facilities
-                </a>
+                </Link>
               </Col>
             </Row>
           </Col>
